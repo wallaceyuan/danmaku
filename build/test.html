@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>ABPlayerHTML5 by Jabbany</title>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/ext/test.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/base.min.css?1" />
+  </head>
+  <body>
+	<div class="wrapper">
+		<video webkit-playsinline id="video-1" autobuffer="true" data-setup="{}" width="100%" height="100%">
+			<source src="level5.mp4" type="video/mp4">
+			<source src="//static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4" type="video/mp4">
+			<source src="http://bililive.kksmg.com/hls/sdi20/playlist.m3u8" type="video/mp4">
+			<p>Your browser does not support html5 video!</p>
+		</video>
+		<div id="load-player"></div>
+		<input class="danmu-input ctrl-btn" type="textarea" id="danmu_text" max="300">
+		<div class=" send-btn  ctrl-btn">发送 &gt;</div>
+		<button id="btnInsertTimeline">btnInsertTimeline</button>
+		<button id="realTime">realTime</button>
+	</div>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/CommentCoreLibrary.js"></script>
+	<script type="text/javascript" src="js/jquery.danmu.js"></script>
+	<script src="js/ABPlayer.js"></script>
+	<script type="text/javascript">
+		var winWidth = document.documentElement.clientWidth;
+		var videoHeight = winWidth*9/16+72;
+		console.log(videoHeight);
+		var $_ = function(e){return document.getElementById(e);};
+		window.addEventListener("load",function(){
+			var inst = ABP.create(document.getElementById("load-player"), {
+				"src":{
+					"playlist":[
+						{
+							"video":document.getElementById("video-1"),
+							"comments":"comment-otsukimi.xml"
+						}
+					]
+				},
+				"width":winWidth,
+				"height":videoHeight,
+				"mobile":true
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		window.onload = function(){
+			$("#danmup .danmu-div").danmu("addDanmu",[
+			  { "text":"这是滚动弹幕" ,color:"white",size:1,position:0,time:2}
+			  ,{ "text":"我是帽子绿" ,color:"green",size:1,position:0,time:3}
+			  ,{ "text":"哈哈哈啊哈" ,color:"black",size:1,position:0,time:10}
+			  ,{ "text":"这是顶部弹幕" ,color:"yellow" ,size:1,position:1,time:3}
+			  ,{ "text":"这是底部弹幕" , color:"red" ,size:1,position:2,time:9}
+			  ,{ "text":"大家好，我是伊藤橙" ,color:"orange",size:1,position:1,time:3}
+			  ,{ "text":"这是滚动弹幕222" ,color:"white",size:1,position:0,time:102}
+			  ,{ "text":"我是帽子绿222" ,color:"green",size:1,position:0,time:103}
+			  ,{ "text":"66666666666666666666666666666666666666" ,color:"red",size:1,position:0,time:101}
+			  ,{ "text":"这是顶部弹幕222" ,color:"yellow" ,size:1,position:1,time:103}
+			  ,{ "text":"这是底部弹幕222" , color:"red" ,size:1,position:2,time:109}
+			  ,{ "text":"大家好，我是伊藤橙222" ,color:"orange",size:1,position:1,time:103}
+			]);
+		}
+
+		var video = document.getElementsByTagName('video')[0];
+		video.addEventListener("play", function(){
+			$("#danmup .danmu-div").danmu("danmuResume");
+		});
+		video.addEventListener("pause", function(){
+			console.log('pause');
+			$("#danmup .danmu-div").danmu("danmuPause");
+		});
+		video.addEventListener("waiting", function(){
+			console.log('waiting');
+		});
+		video.addEventListener("playing",function(){
+			console.log('playing');
+			$("#danmup .danmu-div").data("danmuResume");
+		});
+		video.addEventListener("progress",function(){
+			//console.log('progress');
+		});
+		video.addEventListener("timeupdate",function(){
+			//console.log('timeupdate');
+		});
+		
+		
+		$(" .send-btn").on("click", function (e) {
+		    sendDanmu(e);
+		});
+		
+		function sendDanmu(e) {
+		    var text = $(" .danmu-input").get(0).value;
+		    if (text.length == 0) {
+		        return;
+		    }
+		    if (text.length > 255){
+		        alert("弹幕过长！");
+		        return;
+		    }
+		    text = text.replace(/&/g, "&gt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\n/g, "<br>");
+		    var color = 'red';
+		    var position = 0;
+		    var size = 25;
+		    var time = parseInt($.now()/1000 )+10;
+		    var pushtime = parseInt($.now()/1000)+2;
+		    var textObj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","time":' + time + '}';
+		    textObj = '{ "text":"' + text + '","color":"' + color + '","size":"' + size + '","position":"' + position + '","isnew":""}';
+		    var newObj = eval('(' + textObj + ')');
+		    console.log(newObj);
+		    $(" .danmu-div").danmu("addDanmuReal", newObj);
+		    $(' .danmu-div').danmu("pushCach", time);
+		    $(" .danmu-input").get(0).value = '';
+		    //触发事件
+/*		    $(e.data.that).trigger("senddanmu");
+*/		};
+
+
+		//按键事件
+		$(document).ready(function () {
+		    jQuery("body").keydown(function (event) {
+		        if (event.which == 13) {
+		            sendDanmu(event);
+		            return false
+		        }
+		    });
+		});
+	</script>
+  </body>
+</html>

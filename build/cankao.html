@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>ABPlayerHTML5 by Jabbany</title>
+	<script src="http://www.kankanews.com/m/2015ndpd/js/flexible_css.js,flexible.js"></script>
+	<link rel="stylesheet" href="css/ext/test.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/base.min.css?1" />
+	<link rel="stylesheet" href="css/my.css">
+	<link rel="stylesheet" href="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css">
+	</head>
+  <body>
+	<div class="wrapper">
+		<video webkit-playsinline id="video-1" autobuffer="true" data-setup="{}" width="100%" height="100%">
+			<source src="level5.mp4" type="video/mp4">
+			<source src="http://bililive.kksmg.com/hls/sdi20/playlist.m3u8" type="video/mp4">
+			<p>Your browser does not support html5 video!</p>
+		</video>
+		<div id="load-player"></div>
+<!--
+		<input class="danmu-input ctrl-btn" type="textarea" id="danmu_text" max="300">
+-->
+		<div class="bottomContent">
+			<div class="banner" id="test">
+				<div class="logo">
+					<img src="images/logo.png">
+				</div>
+				<div class="colInfo">
+					<p class="title">新闻坊直播间</p>
+					<p class="int">扎根社区 传递民声 周一至周日18:00-18:25</p>
+					<span>LIVE</span>
+				</div>
+			</div>
+			
+			<div class='content'>
+				<div class="contentBox">
+					<div class="listW" id="listW">
+						<p class="host"><i>主持人</i><span>新闻坊主持人：</span>欢迎大家来到新闻坊直播间！</p>
+						<pre></pre>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猴塞雷：</span>贴近民生的节目，不错，我每期都看的~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+						<p><span>猥基百嗑: </span>这个节目做的很好，期待下集~</p>
+					</div>
+				</div>
+			</div>
+<!-- 			<button id="btnInsertTimeline">btnInsertTimeline</button>
+			<button id="realTime">realTime</button>
+ -->
+			<input type="text" placeholder="text" class="text" id="input1" max="300">
+
+<!-- 			<button class="button">发送消息（test）</button>
+ -->
+		</div>
+	</div>
+
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript">
+	
+		var bb = document.getElementById('test');
+
+		bb.addEventListener('click',function(){
+			var objDiv = document.getElementById("listW");
+			objDiv.scrollTop = objDiv.scrollHeight;
+		});
+		var wxInfo = {
+			"openid":"o81pDuLcFI2sNfOuLFYk9RlfSLWc",
+			"nickname": "圆儿圈圈",
+			"sex":"1",
+			"province":"PROVINCE",
+			"city":"CITY",
+			"country":"COUNTRY",
+			"headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+			"unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+		}
+
+/*		$(".content").mCustomScrollbar();
+*/
+		function winHW(param){
+			var video = document.getElementById("video-1");
+			var winHeight = document.documentElement.clientHeight;
+			if(param == 'B'){
+				$('.ABP-Unit').height(winHeight);
+			}else{
+				$('.ABP-Unit').height('5.625rem');
+			}
+		}
+
+		function orientationChange(){
+			switch(window.orientation) {
+				case 0: // Portrait
+				case 180: // Upside-down Portrait
+					winHW();
+					break;
+				case -90: // Landscape: turned 90 degrees counter-clockwise
+				case 90: // Landscape: turned 90 degrees clockwise
+					winHW("B");
+					break;
+			}
+		}
+
+		window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+
+		var video = document.getElementsByTagName('video')[0];
+		video.addEventListener("play", function(){
+			//$("#danmup .danmu-div").danmu("danmuResume");
+		});
+		video.addEventListener("pause", function(){
+			console.log('pause');
+			//$("#danmup .danmu-div").danmu("danmuPause");
+		});
+		video.addEventListener("waiting", function(){
+			console.log('waiting');
+		});
+		video.addEventListener("playing",function(){
+			console.log('playing');
+			//$("#danmup .danmu-div").data("danmuResume");
+		});
+		video.addEventListener("progress",function(){
+			//console.log('progress');
+		});
+		video.addEventListener("timeupdate",function(){
+			//console.log('timeupdate');
+		});
+
+		//按键事件
+		$(document).ready(function () {
+		    jQuery("body").keydown(function (event) {
+		        if (event.which == 13) {
+					alert('13');
+		            //sendDanmu(event);
+		            return false
+		        }
+		    });
+		});
+	</script>
+  </body>
+</html>
