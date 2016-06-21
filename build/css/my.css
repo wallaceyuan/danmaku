@@ -11,124 +11,28 @@ a:active,a:hover,a:link,a:visited{text-decoration:none;}
 video::-webkit-media-controls-start-playback-button {
     display: none;
 }
-img{
-    display: block;width: 100%;
-}
-.banner{
-    padding: 0.46875rem 0;
-    background: #ffffff;position: relative;
-}
-.banner .logo{
-    position: absolute;
-    top: 0.46875rem;left: 0.546875rem;width: 0.9375rem;height: 0.9375rem;vertical-align: middle;
-}
+img{display:block;width:100%;}
+.banner{position:relative;padding:.46875rem 0;background:#fff;}
+.banner .logo{position:absolute;top:.46875rem;left:.546875rem;width:.9375rem;height:.9375rem;vertical-align:middle;}
+.banner .colInfo{position:relative;padding-left:1.625rem;}
+.banner .colInfo .title{color:#333;font-size:.5625rem;line-height:.5625rem;}
+.banner .colInfo .int{margin-top:.234375rem;color:#999;font-size:.3125rem;line-height:.3125rem;}
+.banner span{position:absolute;top:.46875rem;right:.3125rem;padding:.03125rem .3125rem;border-radius:20px;background:#ff2929;color:#fff;font-size:.3125rem;}
+.content{position:relative;overflow:hidden;height:8.053125rem;border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;background:#f1f1f1;}
+.contentBox p{margin-bottom:.1875rem;}
+.contentBox p i{margin-right:.21875rem;padding:.0625rem .21875rem;border-radius:20px;background:#ff2929;color:#fff;font-size:.28125rem;}
+.contentBox p span{color:#999;}
+.contentBox p.host span{color:#333;}
+.contentBox{position:absolute;top:0;left:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100%;color:#333;font-size:.34375rem;-ms-flex-direction:column;-webkit-box-orient:vertical;box-orient:vertical;-webkit-flex-direction:column;flex-direction:column;}
+.listW{overflow-y:scroll;padding:.3125rem .3125rem;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-overflow-scrolling:touch;}
+.inputLogin{padding:.1875rem 0;width:100%;height:.859375rem;background:#fff;vertical-align:middle;text-align:center;}
+.inputLogin .text{display:block;margin:0 auto;width:9.640625rem;height:.859375rem;border-radius:.390625rem;background:#f1f1f1;color:#7a7a7a;text-indent:.3125rem;font-size:.34375rem;}
 
-.banner .colInfo{
-    position: relative;
-    padding-left: 1.625rem;
-}
-
-.banner .colInfo .title{
-    font-size: 0.5625rem;line-height:  0.5625rem;
-    color: #333333;
-}
-
-.banner .colInfo .int{
-    margin-top: 0.234375rem;
-    font-size: 0.3125rem;line-height:0.3125rem;
-    color: #999999;
-}
-.banner span{
-    border-radius: 20px;
-    padding:0.03125rem 0.3125rem;
-    position: absolute;
-    top: 0.46875rem;    right: 0.3125rem;
-    background: #ff2929;
-    color: #fff;
-    font-size: 0.3125rem;
-}
-
-.content{
-    padding:  0.3125rem 0.234375rem;
-    height: 8.053125rem;
-    background: #f1f1f1;
-    border-top: 1px solid #e4e4e4;
-    overflow: hidden;
-    position: relative;
-}
-.contentBox{
-    color: #333333;
-    font-size: 0.3125rem;
-}
-.contentBox p{
-    margin-bottom: 0.21875rem;
-}
-.contentBox p i{
-    border-radius: 20px;
-    padding:0.0625rem 0.21875rem;
-    background: #ff2929;
-    color: #fff;
-    font-size: 0.21875rem;
-    margin-right: 0.21875rem;
-}
-.contentBox p span{
-    color: #999999;
-}
-.contentBox p.host span{
-    color: #333333;
-}
-
-.contentBox{
-/*    position: absolute;
-    top: 0;
-    left: 0;*/
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-/*    width: 100%;
-*/    height: 100%;
-    -ms-flex-direction: column;
-    -webkit-box-orient: vertical;
-    box-orient: vertical;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-}
-.listW {
-    overflow-y: scroll;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    -webkit-overflow-scrolling: touch;
-}
-.inputLogin {
-    position: fixed;
-    bottom: 0px;
-    height: 1.25rem;
-    left: 0px;
-    background: #fff;
-    width: 100%;
-    vertical-align: middle;
-    text-align: center;
-}
-.inputLogin .text{
-    width: 9.640625rem;
-    height: 0.859375rem;
-    border-radius: 0.390625rem;
-    background: #f1f1f1;
-    margin: 0 auto;
-    text-indent: 0.3125rem;
-    font-size: 0.3125rem;
-    color: #7a7a7a;
-    display: block;
-    margin-top: 0.1875rem;
-}
 @media all and (orientation :landscape){video{width:100vh;height:100vh;}
 body{background:red;}
-.bottomContent{display:none;}
+.bottomContent,.inputLogin{display:none;}
 }
 @media all and (orientation :portrait){video{width:100%;height:5.625rem;}
 body{background:green;}
-.bottomContent{display:block;}
+.bottomContent,.inputLogin{display:block;}
 }

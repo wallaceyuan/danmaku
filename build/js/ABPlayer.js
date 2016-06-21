@@ -553,9 +553,11 @@ var ABP = {
 			});
 			ABPInst.btnDm.addEventListener("click", function(){
 				if(ABPInst.cmManager.display == false){
+					removeClass(ABPInst.btnDm,'close');
 					ABPInst.cmManager.display = true;
 					ABPInst.cmManager.startTimer();
 				}else{
+					addClass(ABPInst.btnDm,'close');
 					ABPInst.cmManager.display = false;
 					ABPInst.cmManager.clear();
 					ABPInst.cmManager.stopTimer();
