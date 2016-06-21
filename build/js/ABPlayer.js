@@ -155,7 +155,7 @@ var ABP = {
 				}else{
 					console.log("No recognized format");
 				}
-				danmaku.push(plist[id]["comments"]);
+				//danmaku.push(plist[id]["comments"]);
 			}
 		}else{
 			playlist.push(params.src);
@@ -178,19 +178,26 @@ var ABP = {
 				})
 			]
 		));
-		container.appendChild(_("div", {
+/*		container.appendChild(_("div", {
 					"className":"ABP-Text",
 			},[
 				_("input", {
 					"type":"text"
 				})
-		]));
+		]));*/
 		container.appendChild(_("div", {
 					"className":"ABP-Control"
 			},[
 				_("div", {
 						"className": "button ABP-Play"
 				}),
+				_("div", {
+					"className": "ABP-Text"
+				},[
+					_("input", {
+						"type": "text"
+					})
+				]),
 				_("div", {
 					"className": "progress-bar"
 				},[
@@ -227,13 +234,13 @@ var ABP = {
 					});
 				}
 				if(index < danmaku.length && danmaku[index] !== null){
-					CommentLoader(danmaku[index], bind.cmManager);
+					//CommentLoader(danmaku[index], bind.cmManager);
 				}
 			}
 			currentVideo.addEventListener("ended", function(){
 				bind.gotoNext();
 			});
-			CommentLoader(danmaku[0], bind.cmManager);
+			//CommentLoader(danmaku[0], bind.cmManager);
 		}
 		return bind;
 	}
@@ -626,7 +633,7 @@ var ABP = {
 						}
 					});
 					this.value = '';
-					$('.text').blur();
+					this.blur();
 				}
 			});
 		}
