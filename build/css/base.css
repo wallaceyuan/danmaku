@@ -75,15 +75,32 @@
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
+.ABP-Unit .ABP-Text {
+/*    display: none;
+    position: absolute;*/
+    /* bottom: 0; */
+/*    left: 30pt;
+    right: 80pt;*/
+    /* height: 28pt; */
+/*    padding: 0;
+*/    /* border-top: 1px solid #33b5e5; */
+    /* border-bottom: 1px solid #33b5e5; */
+    /* background: #ddd; */
+/*    opacity: 0.9;
+    top: 5pt;*/
+}
+
 .ABP-Unit .ABP-Text{
   position:absolute;
   bottom:28pt;left:0;right:0;
   height:30px;
   padding:0;
   border-top:1px solid #33b5e5;
+  border-bottom:1px solid #33b5e5;
   background:#000;
   opacity:0.9;
 }
+
 .ABP-Unit .ABP-Text .colorsel{
   position:absolute;
   top:0;left:0;right:0;bottom:0;
@@ -200,6 +217,7 @@
 
 
 .ABP-Unit .ABP-Control .progress-bar {
+  display: none;
   position:absolute;
   overflow:hidden;
   cursor:default;

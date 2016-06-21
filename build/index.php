@@ -1,18 +1,41 @@
+<?php
+	include_once("./class/Wxdanmaku.class.php");
+	//print_r($userinfo['openid']);
+	$roomKey = "roominfo";
+	$userKey = "userinfo";
+/*	setcookie($roomKey, NULL);
+	setcookie($userKey, NULL);*/
+	if(!empty($_COOKIE['roominfo']) && !empty($_COOKIE['roominfo']) ){
+		$roominfo = json_decode($_COOKIE['roominfo'],true);
+		$userinfo = json_decode($_COOKIE['userinfo'],true);
+	}else{
+		$code      = $_GET["code"];
+		$wxdanmaku = new Wxdanmaku($code);
+		$userinfo = $wxdanmaku->userinfo;
+		$roominfo = $wxdanmaku->roominfo;
+		if(!empty($code)){
+			$ri = json_encode($roominfo);
+			$ui = json_encode($userinfo);
+			setcookie($roomKey,$ri, time()+300*1);
+			setcookie($userKey,$ui, time()+300*1);
+		}
+	}
+?>
 <!doctype html>
 <html>
   <head>
 	<meta charset="utf-8">
 	<title>ABPlayerHTML5 by Jabbany</title>
 	<script src="http://www.kankanews.com/m/2015ndpd/js/flexible_css.js,flexible.js"></script>
-	<link rel="stylesheet" href="css/base.css"/>
-	<link rel="stylesheet" href="css/my.css">
+	<link rel="stylesheet" href="http://skin.kankanews.com/v5/danmaku/css/base.css" />
+	<link rel="stylesheet" href="http://skin.kankanews.com/v5/danmaku/css/my.css">
 	</head>
 	<body>
-
 	<div class="wrapper">
 		<video webkit-playsinline id="video-1" autobuffer="true" data-setup="{}" width="100%" height="100%">
-			<source src="http://skin.kankanews.com/v5/danmaku/resource/level5.mp4" type="video/mp4">
-			<source src="//static.cdn.moe/ccltestingvideos/otsukimi_recital.mp4" type="video/mp4">
+			<source src="<?=$roominfo['hls']?>" type="video/mp4">
+			<source src="<?=$roominfo['hls1']?>" type="video/mp4">
+			<source src="<?=$roominfo['hls2']?>" type="video/mp4">
 			<source src="http://bililive.kksmg.com/hls/sdi20/playlist.m3u8" type="video/mp4">
 			<p>Your browser does not support html5 video!</p>
 		</video>
@@ -20,14 +43,15 @@
 		<div class="bottomContent">
 			<div class="banner" id="test">
 				<div class="logo">
-					<img src="http://skin.kankanews.com/v5/danmaku/images/logo.png">
+					<img src="<?=$roominfo['pic']?>">
 				</div>
 				<div class="colInfo">
-					<p class="title">新闻坊直播间</p>
-					<p class="int">扎根社区 传递民声 周一至周日18:00-18:25</p>
+					<p class="title"><?=$roominfo['title']?>直播间</p>
+					<p class="int"><?=$roominfo['intro']?></p>
 				</div>
 				<span>LIVE</span>
 			</div>
+
 			<div class='content'>
 				<div class="contentBox">
 					<div class="listW" id="listW">
@@ -36,27 +60,38 @@
 					</div>
 				</div>
 			</div>
-			<div class="inputLogin">
-				<input type="text" placeholder="输入你的吐槽" class="text" id="input" max="300">
-			</div>
 		</div>
+	</div>
+	<div class="inputLogin">
+		<input type="text" placeholder="输入你的吐槽" class="text" id="input" max="300">
+		<!-- <button class="button">发送消息（test）</button> -->
+	</div>
+<!-- 			<button id="btnInsertTimeline">btnInsertTimeline</button>
+	<button id="realTime">realTime</button>
+	<pre></pre> -->
 <!-- 	<script src="http://192.168.1.108:3000/socket.io/socket.io.js"></script>
  -->	
 	<script src="http://172.24.24.63:3000/socket.io/socket.io.js"></script>
 
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/CommentCoreLibrary.js"></script>
-	<script src="js/ABPlayer.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/jquery-2.1.4.min.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/CommentCoreLibrary.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/ABPlayer.js"></script>
 	<script type="text/javascript">
 		var winWidth = document.documentElement.clientWidth;
 		var winHeight = document.documentElement.clientHeight;
-		var htUrl = 'http://5ea4bcdd9895.ih5.cn/idea/sPJ5dDI';
-		var ua = navigator.userAgent.toLowerCase();
-		var isAndroid = ua.indexOf('android') != -1;
-		var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
-
 		var inst;
 		var wxInfo = {
+			"openid"    :"<?=$userinfo['openid']?>",
+			"nickname"  :"<?=$userinfo['nickname']?>",
+			"sex"     	:"<?=$userinfo['sex']?>",
+			"province"	:"<?=$userinfo['province']?>",
+			"city"		:"<?=$userinfo['city']?>",
+			"country"   :"<?=$userinfo['country']?>",
+			"headimgurl":"<?=$userinfo['headimgurl']?>",
+			"unionid"	:"<?=$userinfo['unionid']?>"
+		}
+		console.log(wxInfo);
+/*		var wxInfo = {
 			"openid":"o81pDuLcFI2sNfOuLFYk9RlfSLWc",
 			"nickname": "圆儿圈圈",
 			"sex":"1",
@@ -65,7 +100,7 @@
 			"country":"COUNTRY",
 			"headimgurl":    "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
 			"unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-		}
+		}*/
 		var socket = io.connect('http://172.24.24.63:3000/wechat');
 /*		var socket = io.connect('http://192.168.1.108:3000/wechat');
 */
@@ -107,6 +142,7 @@
 	            }
 	        }
 	    });
+	    
 /*		var videoHeight = winWidth*9/16+72;
 */		var videoHeight = winWidth*9/16;
 		var $_ = function(e){return document.getElementById(e);};
@@ -115,8 +151,8 @@
 				"src":{
 					"playlist":[
 						{
-							"video":document.getElementById("video-1")/*,
-							"comments":"comment-otsukimi.xml"*/
+							"video":document.getElementById("video-1"),
+							"comments":"comment-otsukimi.xml"
 						}
 					]
 				},
@@ -130,9 +166,29 @@
 			console.log(winHeight,videoHeight,bH,ipH);
 			$('.content').height(winHeight-(vidH+bH+ipH+2));
 		});
-
-	    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
 	    
+	    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+	    var video = document.getElementsByTagName('video')[0];
+	    video.addEventListener("play", function(){
+	    	//$("#danmup .danmu-div").danmu("danmuResume");
+	    });
+	    video.addEventListener("pause", function(){
+	    	console.log('pause');
+	    	//$("#danmup .danmu-div").danmu("danmuPause");
+	    });
+	    video.addEventListener("waiting", function(){
+	    	console.log('waiting');
+	    });
+	    video.addEventListener("playing",function(){
+	    	console.log('playing');
+	    	//$("#danmup .danmu-div").data("danmuResume");
+	    });
+	    video.addEventListener("progress",function(){
+	    	//console.log('progress');
+	    });
+	    video.addEventListener("timeupdate",function(){
+	    	//console.log('timeupdate');
+	    });
 		function messageAdd(msg,flag){
 			var msgInsrt = '<p><span>'+msg.nickName+': </span>'+msg.message+'</p>';
 			$('.listW').append(msgInsrt);
@@ -154,16 +210,8 @@
 			var video = document.getElementById("video-1");
 			var winHeight = document.documentElement.clientHeight;
 			if(param == 'B'){
-				$('.bottomContent,.inputLogin').css('display','none');
-				if(isIos){
-					$('.ABP-Unit .ABP-Text').css('display','block');
-				}
 				$('.ABP-Unit').height(winHeight);
 			}else{
-				$('.bottomContent,.inputLogin').css('display','block');
-				if(isIos){
-					$('.ABP-Unit .ABP-Text').css('display','none');
-				}
 				$('.ABP-Unit').height('5.625rem');
 			}
 		}
