@@ -46,8 +46,8 @@
 	</div>
 	<div class="wrapper">
 		<video webkit-playsinline id="video-1" autobuffer="true" data-setup="{}" width="100%" height="100%">
-			<source src="http://skin.kankanews.com/v5/danmaku/resource/level5.mp4" type="video/mp4">
-			<source src="<?=$roominfo['hls']?>" type="video/mp4">
+<!-- 			<source src="http://bililive.kksmg.com/hls/sdi20/playlist.m3u8" type="video/mp4">
+ -->			<source src="<?=$roominfo['hls']?>" type="video/mp4">
 			<source src="<?=$roominfo['hls1']?>" type="video/mp4">
 			<source src="<?=$roominfo['hls2']?>" type="video/mp4">
 			<p>Your browser does not support html5 video!</p>
@@ -81,9 +81,9 @@
 <!-- 	<script src="http://192.168.1.108:3000/socket.io/socket.io.js"></script>
  -->	
 	<script src="http://172.24.24.63:3000/socket.io/socket.io.js"></script>
-	<script src="http://172.16.10.95/skin/v5/danmaku/js/jquery-2.1.4.min.js"></script>
-	<script src="http://172.16.10.95/skin/v5/danmaku/js/CommentCoreLibrary.js"></script>
-	<script src="http://172.16.10.95/skin/v5/danmaku/js/ABPlayer.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/jquery-2.1.4.min.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/CommentCoreLibrary.js"></script>
+	<script src="http://skin.kankanews.com/v5/danmaku/js/ABPlayer.js"></script>
 	<script type="text/javascript">
 		var wxInfo = {
 			"openid"    :"<?=$userinfo['openid']?>",
@@ -97,6 +97,6 @@
 		}
 		console.log(wxInfo);
 	</script>
-	<script type="text/javascript" src="http://172.16.10.95/skin/v5/danmaku/js/index.js"></script>
+	<script type="text/javascript" src="http://114.80.151.109/spa/m/danmaku/js/index.js"></script>
   </body>
 </html>

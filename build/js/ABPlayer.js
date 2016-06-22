@@ -172,15 +172,6 @@ var ABP = {
 				}),
 				playlist[0]
 		]));
-		container.appendChild(_("div", {
-					"id":"danmup"
-			},[
-				_("div", {
-						"className": "danmu-div",
-						"id":"danmup-danmu-div"
-				})
-			]
-		));
 /*		container.appendChild(_("div", {
 					"className":"ABP-Text",
 			},[
