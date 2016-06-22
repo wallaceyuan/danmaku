@@ -13,7 +13,7 @@
   width:auto !important;
   height:auto !important;
   position:fixed;
-  z-index:9999;
+  z-index:999;
 }
 .ABP-Unit .ABP-Video{
   position:absolute;
@@ -30,6 +30,7 @@
 .ABP-Unit .ABP-Video .ABP-Container{
   -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
           transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+    -webkit-backface-visibility: hidden;
   position: absolute;
   display: block;
   overflow: hidden;
@@ -49,6 +50,7 @@
 .ABP-Unit .ABP-Video .ABP-Container .cmt{
   -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
           transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
+    -webkit-backface-visibility: hidden;
   position: absolute;
   padding: 3px 0 0 0;
   margin: 0;

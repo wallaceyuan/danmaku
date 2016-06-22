@@ -9,8 +9,8 @@
         mobile = true;
     }
 
-    var socket = io.connect('http://172.24.24.63:3000/wechat');
-    /*        var socket = io.connect('http://192.168.1.108:3000/wechat');*/
+/*    var socket = io.connect('http://172.24.24.63:3000/wechat');
+*/            var socket = io.connect('http://192.168.1.108:3000/wechat');
     socket.on('connect', function() {
         var msgInsrt = '<p class="syinfo">\u623f\u95f4\u8fde\u63a5\u4e2d\u002e\u002e\u002e</p>';
         $('.listW').append(msgInsrt);
@@ -31,7 +31,6 @@
         console.log(data);
     });
     $('.text').on("keyup", function(k) {
-        console.log('1212');
         if (this.value == null) return;
         if (k != null && k.keyCode === 13) {
             var vv = this.value;
@@ -125,29 +124,36 @@
 
     function winHW(param) {
         var playerEl = $('.ABP-Unit');
-        setTimeout(function() {
-            if (param == 'B') {
-                playerEl.css({
-                    width: $(window).width(),
-                    height: $(window).height()
-                });
+        if (param == 'B') {
+        	$('.ABP-Unit').addClass('ABP-FullScreen');
+        	inst.cmStageResize();
+/*                playerEl.css({
+                width: $(window).width(),
+                height: $(window).height()
+            });*/
+            setTimeout(function() {
                 $('.bottomContent,.inputLogin').css('display', 'none');
                 $('.ABP-Unit .ABP-Text').removeClass('shu');
-            } else {
-                playerEl.css({
-                    width: $(window).width(),
-                    height: '5.625rem'
-                });
+                $('.loading').css('display','none');
+            }, 800);
+        } else {
+/*                playerEl.css({
+                width: $(window).width(),
+                height: '5.625rem'
+            });*/
+            $('.ABP-Unit').removeClass('ABP-FullScreen');
+            inst.cmStageResize();
+            setTimeout(function() {
                 $('.bottomContent,.inputLogin').css('display', 'block');
                 $('.ABP-Unit .ABP-Text').addClass('shu');
-            }
-            $('.loading').css('display','none');
-        }, 500);
+                $('.loading').css('display','none');
+            }, 800);
+        }
     }
 
     function orientationChange() {
+    	$('.loading').css('display','block');
         if(mobile){
-            $('.loading').css('display','block');
             switch (window.orientation) {
                 case 0: // Portrait
                 case 180: // Upside-down Portrait

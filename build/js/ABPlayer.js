@@ -304,6 +304,9 @@ var ABP = {
 			sendDanma:function(obj){
 				ABPInst.cmManager.send(obj);
 			},
+			cmStageResize:function(){
+				ABPInst.cmManager.setBounds();
+			},
 			insertDanma:function(obj){
 				ABPInst.cmManager.insert(obj);
 			},
