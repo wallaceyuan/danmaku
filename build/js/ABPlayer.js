@@ -10,10 +10,10 @@ function CommentLoader(a, b, c) {
 	d = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP"), d.open("GET", a, !0), d.send();
 	var e = b;
 	d.onreadystatechange = function() {
-/*		if (4 == d.readyState && 200 == d.status) if ("Microsoft Internet Explorer" == navigator.appName) {
+		if (4 == d.readyState && 200 == d.status) if ("Microsoft Internet Explorer" == navigator.appName) {
 			var a = new ActiveXObject("Microsoft.XMLDOM");
 			a.async = !1, a.loadXML(d.responseText), e.load(BilibiliParser(a)), c()
-		} else e.load(BilibiliParser(d.responseXML)), c()*/
+		} else e.load(BilibiliParser(d.responseXML)), c()
 	}
 }
 function createCORSRequest(a, b) {
@@ -99,7 +99,8 @@ var ABP = {
 			"width":512,
 			"height":384,
 			"src":"",
-			"mobile":false
+			"mobile":false,
+			"comment":true
 		});
 		if (typeof element === "string") {
 			elem = $(element);
@@ -155,7 +156,9 @@ var ABP = {
 				}else{
 					console.log("No recognized format");
 				}
-				//danmaku.push(plist[id]["comments"]);
+				if(params.comment){
+					danmaku.push(plist[id]["comments"]);
+				}
 			}
 		}else{
 			playlist.push(params.src);
@@ -234,13 +237,17 @@ var ABP = {
 					});
 				}
 				if(index < danmaku.length && danmaku[index] !== null){
-					//CommentLoader(danmaku[index], bind.cmManager);
+					if(params.comment){
+						CommentLoader(danmaku[index], bind.cmManager);
+					}
 				}
 			}
 			currentVideo.addEventListener("ended", function(){
 				bind.gotoNext();
 			});
-			//CommentLoader(danmaku[0], bind.cmManager);
+			if(params.comment){
+				CommentLoader(danmaku[0], bind.cmManager);
+			}
 		}
 		return bind;
 	}
@@ -444,6 +451,9 @@ var ABP = {
 			var txti = txtf[0].getElementsByTagName("input");
 			if(txti.length > 0)
 				ABPInst.txtText = txti[0];
+			if(!mobile){
+				txtf[0].style.display="none";;
+			}
 		}
 		/** Bind the Comment Disable button **/
 		var cmbtn = playerUnit.getElementsByClassName("ABP-CommentShow");
