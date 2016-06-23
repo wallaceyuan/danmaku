@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>ABPlayerHTML5 by Jabbany</title>
+    <title>新闻坊直播</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="http://www.kankanews.com/m/2015ndpd/js/flexible_css.js,flexible.js"></script>
-    <link rel="stylesheet" href="css/base.css?1" />
-    <link rel="stylesheet" href="css/my.css?11">
+    <link rel="stylesheet" href="http://114.80.151.109/spa/m/danmaku/css/base.css?1" />
+    <link rel="stylesheet" href="http://114.80.151.109/spa/m/danmaku/css/my.css?11">
 </head>
 <body>
     <div class="loading">
@@ -15,11 +16,7 @@
         </div>
     </div>
     <div class="wrapper">
-        <video webkit-playsinline id="video-1" autobuffer="true" data-setup="{}" width="100%" height="100%">
-        	<source src="http://bililive.kksmg.com/hls/sdi20/playlist.m3u8" type="video/mp4">
-            <source src="../resource/level5.mp4" type="video/mp4">
-            <p>Your browser does not support html5 video!</p>
-        </video>
+        <div class="videoW"></div>
         <div id="load-player"></div>
         <div class="bottomContent">
             <div class="banner" id="test">
@@ -36,7 +33,6 @@
                 <div class="contentBox">
                     <div class="listW" id="listW">
                         <p class="host"><i>主持人</i><span>新闻坊主持人：</span>欢迎大家来到新闻坊直播间！</p>
-                        <p><span>恍恍惚惚：</span>不错不错，竟然有首页网页版。</p>
                     </div>
                 </div>
             </div>
@@ -45,25 +41,31 @@
             </div>
         </div>
     </div>
-            <script src="http://192.168.1.108:3000/socket.io/socket.io.js"></script>
-<!--             <script src="http://172.24.24.63:3000/socket.io/socket.io.js"></script>
- -->        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/CommentCoreLibrary.js"></script>
-        <script src="js/ABPlayer.js"></script>
-        <script type="text/javascript">
-            var wxInfo = {
-                "openid": "o81pDuLcFI2sNfOuLFYk9RlfSLWc",
-                "nickname": "test",
-                "sex": "1",
-                "province": "PROVINCE",
-                "city": "CITY",
-                "country": "COUNTRY",
-                "headimgurl": "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
-                "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
-            };
-        </script>
+<!--             <script src="http://192.168.1.108:3000/socket.io/socket.io.js"></script>
+             <script src="http://172.24.24.63:3000/socket.io/socket.io.js"></script>-->
+    <script src="http://114.80.151.109/spa/m/danmaku/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        var wxInfo = {
+            "openid": "o81pDuLcFI2sNfOuLFYk9RlfSLWc",
+            "nickname": "test",
+            "sex": "1",
+            "province": "PROVINCE",
+            "city": "CITY",
+            "country": "COUNTRY",
+            "headimgurl": "http://wx.qlogo.cn/mmopen/g3MonUZtNHkdmzicIlibx6iaFqAc56vxLSUfpb6n5WKSYVY0ChQKkiaJSgQ1dZuTOgvLLrhJbERQQ4eMsv84eavHiaiceqxibJxCfHe/46",
+            "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
+        };
+        var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%">'+
+                        '<source src="http://bililive.kksmg.com/hls/rikaze001/playlist.m3u8" type="video/mp4">'+
+                        '<source src="../resource/level5.mp4" type="video/mp4">'+
+                        '<p>Your browser does not support html5 video!</p>'+
+                    '</video>';
+        $('.videoW').append(videoH);
+    </script>
+    <script src="js/ABPlayer.js"></script>
+    <script src="js/CommentCoreLibrary.js"></script>
+    <script src="http://danmaku.kankanews.com/socket.io/socket.io.js"></script>
     <script src="js/index.js"></script>
-
 </body>
 
 </html>

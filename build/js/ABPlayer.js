@@ -394,10 +394,10 @@ var ABP = {
 					ABPInst.cmManager.stopTimer();
 				});
 				video.addEventListener("waiting", function(){
-					ABPInst.cmManager.stopTimer();
+					//ABPInst.cmManager.stopTimer();
 				});
 				video.addEventListener("playing",function(){
-					ABPInst.cmManager.startTimer();
+					//ABPInst.cmManager.startTimer();
 				});
 			}
 		}
@@ -456,7 +456,6 @@ var ABP = {
 		}
 		/** Create a commentManager if possible **/
 		if(typeof CommentManager !== "undefined"){
-			console.log(433,ABPInst.divComment);
 			ABPInst.cmManager = new CommentManager(ABPInst.divComment);
 			ABPInst.cmManager.display = true;
 			ABPInst.cmManager.init();
@@ -643,7 +642,6 @@ var ABP = {
 		}
 		/** Create a bound CommentManager if possible **/
 		if(typeof CommentManager !== "undefined"){
-			console.log(709,ABPInst.divComment);
 			if(ABPInst.state.autosize){
 				var autosize = function(){
 					if(video.videoHeight === 0 || video.videoWidth === 0){

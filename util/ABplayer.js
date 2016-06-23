@@ -107,24 +107,3 @@ if(ABPInst.txtText !== null){
     });
 }
 
-var video = document.getElementsByTagName('video')[0];
-video.addEventListener("play", function(){
-    //$("#danmup .danmu-div").danmu("danmuResume");
-});
-video.addEventListener("pause", function(){
-    console.log('pause');
-    //$("#danmup .danmu-div").danmu("danmuPause");
-});
-video.addEventListener("waiting", function(){
-    console.log('waiting');
-});
-video.addEventListener("playing",function(){
-    console.log('playing');
-    //$("#danmup .danmu-div").data("danmuResume");
-});
-video.addEventListener("progress",function(){
-    //console.log('progress');
-});
-video.addEventListener("timeupdate",function(){
-    //console.log('timeupdate');
-});

@@ -10,12 +10,14 @@
 	<link rel="stylesheet" href="css/base.min.css?1" />
   </head>
   <body>
-	<div class="wrapper">
-		<input class="danmu-input ctrl-btn" type="textarea" id="danmu_text" max="300">
-	</div>
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/CommentCoreLibrary.js"></script>
-	<script type="text/javascript" src="js/jquery.danmu.js"></script>
-	<script src="js/ABPlayer.js"></script>
+	<script type="text/javascript">
+		if (window.orientation === 180 || window.orientation === 0) {
+			alert('竖屏状态！');
+		}
+		if (window.orientation === 90 || window.orientation === -90 ){
+			alert('横屏状态！');
+		}
+
+	</script>
   </body>
 </html>
