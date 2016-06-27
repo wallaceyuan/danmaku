@@ -26,6 +26,23 @@
   width:100%;
   height:100%;
 }
+.ABP-Unit .ABP-Video .tag ,.ABP-Unit .ABP-Video .tag.ABP-Play {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -1rem 0 0 -1rem;
+  width: 2rem;
+  height: 2rem;
+  background-size: cover;
+  background-image: url('../images/play.png');
+}
+
+.ABP-Unit .ABP-Video .tag.ABP-Pause{
+  display: none;
+  background-size: cover;
+  background-image: url('../images/pause.png');
+}
 
 .ABP-Unit .ABP-Video .ABP-Container{
   -webkit-transform: matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1);
@@ -80,7 +97,8 @@
 
 
 .ABP-Unit .ABP-Text {
-  position: absolute;/*display: none;*/
+  position: absolute;
+  /* display: none; */
   bottom: 2pt;
   left: 30pt;
   right: 70pt;
@@ -88,30 +106,64 @@
   padding: 0;
   /* border-top: 1px solid #33b5e5; */
   /* border-bottom: 1px solid #33b5e5; */
-  background: #eee;
+  /* background: #eee; */
   opacity: 0.9;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+}
+.inputLogin  span.spanbar {
+    width: 1.25rem;
+    display: inline-block;
+    float: left;
+    height: .859375rem;
+    border-radius: 0 0.15625rem 0.15625rem 0;
+    background: #ff2929;
+    color: #fff;
+    text-align: center;
+    font-size: .34375rem;
+    line-height: .859375rem;
 }
 .ABP-Unit .ABP-Text .colorsel{
   position:absolute;
   top:0;left:0;right:0;bottom:0;
 }
 .ABP-Unit .ABP-Text input[type=text]{
-  background:transparent;
-  border:none;
-  padding:0;margin:0;
-  position:absolute;
-  display:block;
-  top:0;left:0;right:0;bottom:0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  /* right: 0; */
+  bottom: 0;
   vertical-align: middle;
   color: #7a7a7a;
-  outline:none;
+  outline: none;
   font-family: monospace;
-  height:30px;
-  min-width:90%;
-  padding-left:10px;padding-right:10px;
-  font-size:18px;
+  height: 30px;
+  min-width: 85%;
+  font-size: 18px;
+  border-radius: 20px 0 0 20px ;
+  background: #eee;
+  text-indent: 20px;
 }
+.ABP-Unit .ABP-Text span{
+  display: inline-block;
+  height: 30px;
+  border-radius: 0 0.15625rem 0.15625rem 0;
+  background: #ff2929;
+  color: #fff;
+  text-align: center;
+  font-size: .34375rem;
+  line-height: .859375rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15%;
+  line-height: 30px;
+}
+
 /*.ABP-Unit .ABP-Control{
   position:absolute;
   bottom:0;left:0;right:0;

@@ -69,6 +69,7 @@
 		</div>
 		<div class="inputLogin">
 			<input type="text" placeholder="输入你的吐槽" class="text" id="input" max="300">
+			<span>发送</span>
 			<!-- <button class="button">发送消息（test）</button> -->
 		</div>
 	</div>
@@ -88,8 +89,8 @@
 		}
 		console.log(wxInfo);
 		var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%">'+
-		                '<source src="<?=$roominfo['hls']?>" type="video/mp4">'+
-		                '<source src="<?=$roominfo['hls2']?>" type="video/mp4">'+
+		                '<source src="http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8" type="video/mp4">'+
+		                '<source src="<?=$roominfo['hls1']?>" type="video/mp4">'+
 		                '<p>Your browser does not support html5 video!</p>'+
 		            '</video>';
 		$('.videoW').append(videoH);

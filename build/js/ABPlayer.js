@@ -170,7 +170,10 @@ var ABP = {
 			}, [_("div", {
 					"className":"ABP-Container"
 				}),
-				playlist[0]
+				playlist[0],
+				_("div", {
+					"className": "tag"
+				})
 		]));
 /*		container.appendChild(_("div", {
 					"className":"ABP-Text",
@@ -190,6 +193,9 @@ var ABP = {
 				},[
 					_("input", {
 						"type": "text"
+					}),
+					_("span", {
+						"className": "spanbar"
 					})
 				]),
 				_("div", {
@@ -257,7 +263,9 @@ var ABP = {
 			btnDm:null,
 			video:null,
 			divTextField:null,
-			txtText:null,
+			txtText:playerUnit.getElementsByClassName("ABP-Text"),
+			clickText:playerUnit.getElementsByClassName("spanbar"),
+			playText:playerUnit.getElementsByClassName("tag"),
 			cmManager:null,
 			defaults:{
 				w:0,
@@ -440,6 +448,9 @@ var ABP = {
 		ABPInst.btnFull = fbtn[0];
 		/** Bind the TextField **/
 		var txtf = playerUnit.getElementsByClassName("ABP-Text");
+		var aaa = playerUnit.getElementsByClassName("spanbar");
+		aaa[0].innerHTML='发送';
+		//$(txf)[0].next('span').html('殊途');
 		if(txtf.length > 0){
 			ABPInst.divTextField = txtf[0];
 			var txti = txtf[0].getElementsByTagName("input");
@@ -565,13 +576,28 @@ var ABP = {
 					ABPInst.barTime.style.width =((e.layerX) * 100 / this.offsetWidth) + "%";
 				}
 			});
+			
+			ABPInst.playText[0].addEventListener('click',function(){
+				if(ABPInst.video.paused){
+					ABPInst.video.play();
+					this.className = "tag ABP-Play ABP-Pause";
+					ABPInst.btnPlay.className = "button ABP-Play ABP-Pause";
+				}else{
+					ABPInst.video.pause();
+					this.className = "tag ABP-Play";
+					ABPInst.btnPlay.className = "button ABP-Play";
+				}
+			});
+
 			ABPInst.btnPlay.addEventListener("click", function(){
 				if(ABPInst.video.paused){
 					ABPInst.video.play();
 					this.className = "button ABP-Play ABP-Pause";
+					ABPInst.playText[0].className = "tag ABP-Play ABP-Pause";
 				}else{
 					ABPInst.video.pause();
 					this.className = "button ABP-Play";
+					ABPInst.playText[0].className = "tag ABP-Play";
 				}
 			});
 			playerUnit.addEventListener("keydown", function(e){
@@ -638,6 +664,21 @@ var ABP = {
 					this.value = '';
 					this.blur();
 				}
+			});
+		}
+		if(ABPInst.clickText !== null){
+			ABPInst.clickText[0].addEventListener("click", function(k){
+				var vv = ABPInst.txtText.value;
+				if(vv == null) return;
+				socket.emit('createMessage', {
+					message:vv,
+					type:0,up:0,down:0,
+					perform:{
+						color:'red',fontSize:'16px'
+					}
+				});
+				ABPInst.txtText.value = '';
+				ABPInst.txtText.blur();
 			});
 		}
 		/** Create a bound CommentManager if possible **/
