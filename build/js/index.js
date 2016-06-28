@@ -7,13 +7,6 @@ var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 
 var video = document.getElementsByTagName('video')[0];
 
-video.addEventListener('pause',function(){
-    $('.tag').css('display','block');
-});
-video.addEventListener('play',function(){
-    $('.tag').css('display','none');
-});
-
 
 var mobile = false,state = true,inst;
 var mesRec = '';
@@ -252,7 +245,7 @@ function launchFullscreen(element) {
 
         var docHtml = document.documentElement;
         var docBody = document.body;
-        var videobox = document.getElementById('videobox');
+        var videobox = document.getElementById('load-player');
         var cssText = 'width:100%;height:100%;overflow:hidden;';
         docHtml.style.cssText = cssText;
         docBody.style.cssText = cssText;
@@ -276,7 +269,7 @@ function exitFullscreen() {
     } else {
         var docHtml = document.documentElement;
         var docBody = document.body;
-        var videobox = document.getElementById('videobox');
+        var videobox = document.getElementById('load-player');
         docHtml.style.cssText = "";
         docBody.style.cssText = "";
         videobox.style.cssText = "";

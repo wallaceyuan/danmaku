@@ -171,9 +171,6 @@ var ABP = {
 					"className":"ABP-Container"
 				}),
 				playlist[0],
-				_("div", {
-					"className": "tag"
-				})
 		]));
 /*		container.appendChild(_("div", {
 					"className":"ABP-Text",
@@ -213,7 +210,10 @@ var ABP = {
 				}),
 				_("div", {
 					"className": "button ABP-FullScreen"
-				})
+				})/*,
+				_("div", {
+					"className": "tag"
+				})*/
 		]));
 		var bind = ABP.bind(container, params.mobile);
 		if(playlist.length > 0){
@@ -265,7 +265,6 @@ var ABP = {
 			divTextField:null,
 			txtText:playerUnit.getElementsByClassName("ABP-Text"),
 			clickText:playerUnit.getElementsByClassName("spanbar"),
-			playText:playerUnit.getElementsByClassName("tag"),
 			cmManager:null,
 			defaults:{
 				w:0,
@@ -363,7 +362,9 @@ var ABP = {
 				video.addEventListener("progress", function(){
 					if(lastPosition == video.currentTime){
 						video.hasStalled = true;
-						ABPInst.cmManager.stopTimer();
+						if(!params.comment){
+							ABPInst.cmManager.startTimer();
+						}
 					}else
 						lastPosition = video.currentTime;
 				});
@@ -376,7 +377,9 @@ var ABP = {
 				video.addEventListener("timeupdate", function(){
 					if(ABPInst.cmManager.display === false) return;
 					if(video.hasStalled){
-						ABPInst.cmManager.startTimer();
+						if(!params.comment){
+							ABPInst.cmManager.startTimer();
+						}
 						video.hasStalled = false;
 					}
 					ABPInst.cmManager.time(Math.floor(video.currentTime * 1000));
@@ -399,13 +402,19 @@ var ABP = {
 					}
 				});
 				video.addEventListener("pause", function(){
-					ABPInst.cmManager.stopTimer();
+					if(!params.comment){
+						ABPInst.cmManager.startTimer();
+					}
 				});
 				video.addEventListener("waiting", function(){
-					//ABPInst.cmManager.stopTimer();
+					if(!params.comment){
+						ABPInst.cmManager.startTimer();
+					}
 				});
 				video.addEventListener("playing",function(){
-					//ABPInst.cmManager.startTimer();
+					if(!params.comment){
+						ABPInst.cmManager.startTimer();
+					}
 				});
 			}
 		}
@@ -446,6 +455,11 @@ var ABP = {
 		var fbtn = playerUnit.getElementsByClassName("ABP-FullScreen");
 		if(fbtn.length <= 0) return;
 		ABPInst.btnFull = fbtn[0];
+		
+		var commentbtn = playerUnit.getElementsByClassName("ABP-CommentShow");
+		if(commentbtn.length <= 0) return;
+		ABPInst.commentbtn = commentbtn[0];
+
 		/** Bind the TextField **/
 		var txtf = playerUnit.getElementsByClassName("ABP-Text");
 		var aaa = playerUnit.getElementsByClassName("spanbar");
@@ -457,7 +471,7 @@ var ABP = {
 			if(txti.length > 0)
 				ABPInst.txtText = txti[0];
 			if(!mobile){
-				txtf[0].style.display="none";;
+				txtf[0].style.display="none";
 			}
 		}
 		/** Bind the Comment Disable button **/
@@ -506,9 +520,12 @@ var ABP = {
 					}
 					timer = setInterval(function(){
 						if(document.activeElement !== ABPInst.txtText){
-							hideBar();
-							clearInterval(timer);
-							timer = -1;
+							console.log(video.paused);
+							if (!video.paused) {
+								hideBar();
+								clearInterval(timer);
+								timer = -1;
+							}
 						}
 					}, 2500);
 				} catch(e){
@@ -518,7 +535,10 @@ var ABP = {
 			playerUnit.addEventListener("touchmove",listenerMove);
 			playerUnit.addEventListener("mousemove",listenerMove);
 			timer = setTimeout(function(){
-				hideBar();
+				console.log(video.paused);
+				if (!video.paused) {
+					hideBar();
+				}
 			}, 4000);
 		}
 		if(video.isBound !== true){
@@ -577,7 +597,7 @@ var ABP = {
 				}
 			});
 			
-			ABPInst.playText[0].addEventListener('click',function(){
+/*			ABPInst.playText[0].addEventListener('click',function(){
 				if(ABPInst.video.paused){
 					ABPInst.video.play();
 					this.className = "tag ABP-Play ABP-Pause";
@@ -588,16 +608,18 @@ var ABP = {
 					ABPInst.btnPlay.className = "button ABP-Play";
 				}
 			});
-
+*/
 			ABPInst.btnPlay.addEventListener("click", function(){
 				if(ABPInst.video.paused){
 					ABPInst.video.play();
 					this.className = "button ABP-Play ABP-Pause";
-					ABPInst.playText[0].className = "tag ABP-Play ABP-Pause";
+					ABPInst.btnFull.style.display ='block';
+					ABPInst.commentbtn.style.display ='block';
+					//ABPInst.playText[0].className = "tag ABP-Play ABP-Pause";
 				}else{
 					ABPInst.video.pause();
 					this.className = "button ABP-Play";
-					ABPInst.playText[0].className = "tag ABP-Play";
+					//ABPInst.playText[0].className = "tag ABP-Play";
 				}
 			});
 			playerUnit.addEventListener("keydown", function(e){
