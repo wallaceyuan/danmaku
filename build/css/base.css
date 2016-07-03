@@ -116,7 +116,7 @@
   position: absolute;
   /* display: none; */
   bottom: 2pt;
-  left: 30pt;
+  left: 5pt;
   right: 70pt;
   height: 30px;
   padding: 0;
@@ -160,7 +160,7 @@
   height: 30px;
   min-width: 85%;
   font-size: 18px;
-  border-radius: 20px 0 0 20px ;
+  border-radius: 0.15625rem 0 0 0.15625rem;
   background: #eee;
   text-indent: 20px;
 }

@@ -100,19 +100,21 @@ var ABP = {
 			"height":384,
 			"src":"",
 			"mobile":false,
-			"comment":true
+			"comment":true,
+			"rem":false,
 		});
 		if (typeof element === "string") {
 			elem = $(element);
 		}
 		// 'elem' is the parent container in which we create the player.
 		if(!hasClass(elem, "ABP-Unit")){
+			console.log(params.rem);
 			// Assuming we are injecting
 			var container = _("div", {
 				"className": "ABP-Unit",
 				"style":{
-					"width": params.width + "px",
-					"height": params.height + "px"
+					"width": params.rem?params.width+'rem':params.width + "px",
+					"height":params.rem?params.height+'rem': params.height + "px"
 				}
 			});
 			elem.appendChild(container);
@@ -215,7 +217,7 @@ var ABP = {
 					"className": "tag"
 				})*/
 		]));
-		var bind = ABP.bind(container, params.mobile);
+		var bind = ABP.bind(container, params.mobile,'',params);
 		if(playlist.length > 0){
 			var currentVideo = playlist[0];
 			bind.gotoNext = function(){
@@ -228,7 +230,7 @@ var ABP = {
 					container.appendChild(currentVideo);
 					bind.video.style.display = "none";
 					bind.video = currentVideo;
-					bind.swapVideo(currentVideo);
+					bind.swapVideo(currentVideo,'');
 					currentVideo.addEventListener("ended", function(){
 						bind.gotoNext();
 					});
@@ -253,7 +255,7 @@ var ABP = {
 		// 
 	};
 
-	ABP.bind = function (playerUnit, mobile, state) {
+	ABP.bind = function (playerUnit, mobile, state, param) {
 		var ABPInst = {
 			btnPlay:null,
 			barTime:null,
@@ -320,7 +322,7 @@ var ABP = {
 			swapVideo: null
 		};
 
-		ABPInst.swapVideo = function(video){
+		ABPInst.swapVideo = function(video,params){
 			video.addEventListener("timeupdate", function(){
 				if(!dragging)
 					ABPInst.barTime.style.width = ((video.currentTime / video.duration) * 100) + "%";
@@ -385,6 +387,7 @@ var ABP = {
 					ABPInst.cmManager.time(Math.floor(video.currentTime * 1000));
 				});
 				video.addEventListener("play", function(){
+					videoState  = true;
 					ABPInst.cmManager.startTimer();
 					try{
 						var e = this.buffered.end(0);
@@ -402,6 +405,7 @@ var ABP = {
 					}
 				});
 				video.addEventListener("pause", function(){
+					videoState  = false;
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();
 					}
@@ -508,6 +512,7 @@ var ABP = {
 			};
 			ABPInst.divComment.style.bottom = 
 				(ABPInst.controlBar.offsetHeight + ABPInst.divTextField.offsetHeight) + "px";
+				
 			var listenerMove = function(){
 				ABPInst.controlBar.style.display = "";
 				ABPInst.divTextField.style.display = "";
@@ -520,7 +525,6 @@ var ABP = {
 					}
 					timer = setInterval(function(){
 						if(document.activeElement !== ABPInst.txtText){
-							console.log(video.paused);
 							if (!video.paused) {
 								hideBar();
 								clearInterval(timer);
@@ -535,19 +539,24 @@ var ABP = {
 			playerUnit.addEventListener("touchmove",listenerMove);
 			playerUnit.addEventListener("mousemove",listenerMove);
 			timer = setTimeout(function(){
-				console.log(video.paused);
 				if (!video.paused) {
 					hideBar();
 				}
 			}, 4000);
 		}
 		if(video.isBound !== true){
-			ABPInst.swapVideo(video);
+			ABPInst.swapVideo(video,param);
 			ABPInst.btnFull.addEventListener("click", function(){
 				ABPInst.state.fullscreen = hasClass(playerUnit, "ABP-FullScreen");
 				if(!ABPInst.state.fullscreen){
 					addClass(playerUnit, "ABP-FullScreen");
+					if(!fullPage){
+						removeClass(ABPInst.divTextField,'shu');
+					}
 				}else{
+					if(!fullPage){
+						addClass(ABPInst.divTextField,'shu');
+					}
 					removeClass(playerUnit, "ABP-FullScreen");
 				}
 				ABPInst.state.fullscreen = !ABPInst.state.fullscreen;
@@ -709,6 +718,7 @@ var ABP = {
 				var autosize = function(){
 					if(video.videoHeight === 0 || video.videoWidth === 0){
 						return;
+
 					}
 					var aspectRatio = video.videoHeight / video.videoWidth;
 					// We only autosize within the bounds

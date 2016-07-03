@@ -276,12 +276,8 @@ function(a, b) {
 			return (null === this._x || void 0 === this._x) && (this._x = this.align % 2 === 0 ? this.dom.offsetLeft : this.parent.width - this.dom.offsetLeft - this.width), this.absolute ? this._x : this._x / this.parent.width
 		},
 		set: function(a) {
-			this._x = a, this.absolute || (this._x *= this.parent.width),
-/*
-            this.align % 2 === 0 ? this.dom.style.left = this._x + "px" : this.dom.style.right = this._x + "px"
-*/
-            this.align % 2 === 0 ? this.dom.style.webkitTransform = 'translate('+this._x +'px)':this.dom.style.webkitTransform = 'translate('+this._x +'px)'
-        },
+			this._x = a, this.absolute || (this._x *= this.parent.width), this.align % 2 === 0 ? this.dom.style.left = this._x + "px" : this.dom.style.right = this._x + "px"
+		},
 		enumerable: !0,
 		configurable: !0
 	}), Object.defineProperty(a.prototype, "y", {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="http://www.kankanews.com/m/2015ndpd/js/flexible_css.js,flexible.js"></script>
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="http://skin.kankanews.com/v5/danmaku/css/my.css">
+    <link rel="stylesheet" href="css/my.css">
 </head>
 <body>
     <div class="loading">
@@ -46,6 +46,11 @@
              <script src="http://172.24.24.63:3000/socket.io/socket.io.js"></script>-->
     <script src="http://114.80.151.109/spa/m/danmaku/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
+        var device = 'mobile',fullPage = false,videoState = false;
+        if(!/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|android|iPod/i.test(navigator.userAgent.toLowerCase())){
+            device = 'PC';
+        }
+
         var wxInfo = {
             "openid": "o81pDuLcFI2sNfOuLFYk9RlfSLWc",
             "nickname": "test",

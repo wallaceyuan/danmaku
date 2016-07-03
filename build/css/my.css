@@ -69,6 +69,30 @@ img{display:block;width:100%;}
 .ABP-Text.shu{
 	display: none;
 }
+
+.ABP-Unit.ABP-FullScreen {
+/*    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10000;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);*/
+}
+.ABP-Unit {
+/*    position: relative;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;*/
+}
+
 :-webkit-full-screen {}
 
 :-moz-full-screen {}
@@ -96,7 +120,6 @@ img{display:block;width:100%;}
 	body{background: red;}
     */
 }
-
 
 @media (max-width:640px) and (orientation :portrait){
 	video{width:100%;height:5.625rem;}

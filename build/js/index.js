@@ -7,12 +7,14 @@ var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 
 var video = document.getElementsByTagName('video')[0];
 
+var mobile = false,
+    state = true,//用户被禁言的状态
+    inst;
 
-var mobile = false,state = true,inst;
 var mesRec = '';
+    
 
-
-if(/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|android|iPod/i.test(navigator.userAgent.toLowerCase())){
+if (/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|android|iPod/i.test(navigator.userAgent.toLowerCase())) {
     mobile = true;
 }
 
@@ -30,10 +32,10 @@ socket.on('connect', function() {
     });
 });
 socket.on('userStatus', function(data) {
-    if(parseInt(data.status==700)){
+    if (parseInt(data.status == 700)) {
         state = false;
     }
-    var msgInsrt = '<p class="syinfo">\u6b22\u8fce'+wxInfo.nickname+'\u6765\u5230\u76f4\u64ad\u95f4</p>' +
+    var msgInsrt = '<p class="syinfo">\u6b22\u8fce' + wxInfo.nickname + '\u6765\u5230\u76f4\u64ad\u95f4</p>' +
         '<p class="syinfo">\u5f39\u5e55\u8fde\u63a5\u4e2d\u002e\u002e\u002e</p>';
     $('.listW').append(msgInsrt);
     console.log(data);
@@ -45,29 +47,29 @@ $('.text').on("keyup", function(k) {
         var vv = this.value;
         this.value = '';
         $('.text').blur();
-        var msg = {message: vv, type: 0, up: 0, down: 0, perform: {color: 'red', fontSize: '16px'}};
+        var msg = { message: vv, type: 0, up: 0, down: 0, perform: { color: 'red', fontSize: '16px' } };
         mesRec = msg;
-        if(state){
-            socket.emit('createMessage',msg);
-        }else{
+        if (state) {
+            socket.emit('createMessage', msg);
+        } else {
             msg.nickName = wxInfo.nickname;
             messageAdd(msg, true);
         }
     }
 });
 
-$('.inputLogin span').on('click',function(){
+$('.inputLogin span').on('click', function() {
     var vv = $('.text').val();
     if (vv == '') return;
     $('.text').val('');
     $('.text').blur();
-    var msg = {message: vv, type: 0, up: 0, down: 0, perform: {color: 'red', fontSize: '16px'}};
+    var msg = { message: vv, type: 0, up: 0, down: 0, perform: { color: 'red', fontSize: '16px' } };
     mesRec = msg;
-    if(state){
-       socket.emit('createMessage',msg);
-    }else{
-       msg.nickName = wxInfo.nickname;
-       messageAdd(msg, true);
+    if (state) {
+        socket.emit('createMessage', msg);
+    } else {
+        msg.nickName = wxInfo.nickname;
+        messageAdd(msg, true);
     }
 });
 
@@ -76,7 +78,7 @@ socket.on('message.add', function(msg) {
     messageAdd(msg, true);
 });
 socket.on('message.error', function(msg) {
-    if(parseInt(msg.status) == 702){
+    if (parseInt(msg.status) == 702) {
         state = false;
         mesRec.nickName = wxInfo.nickname;
         messageAdd(mesRec, true);
@@ -95,37 +97,40 @@ socket.on('historyData', function(msgs) {
     }
 });
 
-var vidologinH = lib.flexible.rem2px(5.625);
-var videoHeight = winWidth * 9 / 16;
-if(videoHeight >vidologinH){
-    videoHeight = vidologinH;
+/*var vidologinH = lib.flexible.rem2px(5.625);
+var judge = true;var videoH = vidologinH
+var videoHeight = (winWidth * 9 )/16;
+if (videoHeight > vidologinH) {
+    judge = false;
 }
-
+console.log(winWidth,videoHeight,winWidth * 9);
+*/
 window.addEventListener("load", function() {
-    $('.loading').css('display','none');
+    $('.loading').css('display', 'none');
     inst = ABP.create(document.getElementById("load-player"), {
         "src": {
             "playlist": [{
                 "video": document.getElementById("video-1"),
-                "comments":"comment-otsukimi.xml"
+                "comments": "comment-otsukimi.xml"
             }]
         },
         "width": '100%',
-        "height": videoHeight,
+        "height": '5.625',
         "mobile": mobile,
-        "comment":false
+        "comment": false,
+        "rem":true
     });
-    console.log(inst);
     if (window.orientation === 180 || window.orientation === 0) {
         resizeBlock();
         $('.ABP-Text').addClass('shu');
     }
-    if (window.orientation === 90 || window.orientation === -90 ){
+    if (window.orientation === 90 || window.orientation === -90) {
         winHW("B");
     }
 });
 
 window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+
 
 function messageAdd(msg, flag) {
     var msgInsrt = '<p><span>' + msg.nickName + ': </span>' + msg.message + '</p>';
@@ -137,12 +142,12 @@ function messageAdd(msg, flag) {
         "text": msg.message,
         "size": 16
     };
-    if (flag) {
+    if (flag && videoState ) {
         inst.sendDanma(danmaku);
     }
 }
 
-function resizeBlock(){
+function resizeBlock() {
     var bH = $('.banner').innerHeight(),
         ipH = $('.inputLogin').innerHeight(),
         vidH = $('#load-player').innerHeight();
@@ -152,29 +157,39 @@ function resizeBlock(){
 function winHW(param) {
     var playerEl = $('.ABP-Unit');
     if (param == 'B') {
+        fullPage = true;
         $('.ABP-Unit').addClass('ABP-FullScreen');
         $('.bottomContent,.inputLogin').css('display', 'none');
         $('.ABP-Unit .ABP-Text').removeClass('shu');
         inst.cmStageResize();
-        if(isIos){
+        if (isIos) {
             playerEl.css({
                 width: $(window).width(),
                 height: $(window).height()
             });
-        }else{
-            launchFullscreen(video);
+        } else {
+/*            $('video').css({
+                'width':'100%',
+                "height":'100%'
+            });
+            //video[fullscreenvideo]();
+            //launchFullScreen(document.documentElement);
+            launchFullscreen(video);*/
         }
         setTimeout(function() {
             resizeBlock('heng');
-            $('.loading').css('display','none');
+            $('.loading').css('display', 'none');
         }, 800);
     } else {
-        playerEl.css({
-            width: $(window).width(),
-            height: '5.625rem'
-        });
-        if(!isIos){
-            exitFullscreen(video);
+        fullPage = false;
+        if (isIos) {
+            playerEl.css({
+                width: $(window).width(),
+                height: '5.625rem'
+            });
+        }else{
+            //video[cancelfullscreenvideo]();
+            //exitFullscreen();
         }
         $('.bottomContent,.inputLogin').css('display', 'block');
         $('.ABP-Unit').removeClass('ABP-FullScreen');
@@ -184,18 +199,18 @@ function winHW(param) {
             resizeBlock('shu');
             var objDiv = document.getElementById("listW");
             objDiv.scrollTop = objDiv.scrollHeight;
-            $('.loading').css('display','none');
+            $('.loading').css('display', 'none');
         }, 800);
     }
 }
 
 function orientationChange() {
-    $('.loading').css('display','block');
-    if(mobile){
+    $('.loading').css('display', 'block');
+    if (mobile) {
         switch (window.orientation) {
             case 0: // Portrait
             case 180: // Upside-down Portrait
-                winHW();
+                winHW('');
                 break;
             case -90: // Landscape: turned 90 degrees counter-clockwise
             case 90: // Landscape: turned 90 degrees clockwise
@@ -229,7 +244,6 @@ var invokeFieldOrMethod = function(element, method) {
 
 //进入全屏
 function launchFullscreen(element) {
-    console.log(element);
     //此方法不可以在异步任务中执行，否则火狐无法全屏
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -242,7 +256,6 @@ function launchFullscreen(element) {
     } else if (element.webkitRequestFullscreen) {
         element.webkitRequestFullScreen();
     } else {
-
         var docHtml = document.documentElement;
         var docBody = document.body;
         var videobox = document.getElementById('load-player');
@@ -251,7 +264,6 @@ function launchFullscreen(element) {
         docBody.style.cssText = cssText;
         videobox.style.cssText = cssText + ';' + 'margin:0px;padding:0px;';
         document.IsFullScreen = true;
-
     }
 }
 //退出全屏
@@ -276,6 +288,28 @@ function exitFullscreen() {
         document.IsFullScreen = false;
     }
 }
+
+var fullscreen = function(elem) {
+    var prefix = 'webkit';
+      if ( elem[prefix + 'EnterFullScreen'] ) {
+        return prefix + 'EnterFullScreen';
+      } else if( elem[prefix + 'RequestFullScreen'] ) {
+        return prefix + 'RequestFullScreen';
+      };
+    return false;
+};
+var cancelfullscreen = function(elem) {
+    var prefix = 'webkit';
+      if ( elem[prefix + 'ExitFullScreen'] ) {
+        return prefix + 'ExitFullScreen';
+      } else if( elem[prefix + 'CancelFullScreen'] ) {
+        return prefix + 'CancelFullScreen';
+      };
+    return false;
+};
+//var fullscreenvideo = fullscreen(video);
+//var cancelfullscreenvideo = cancelfullscreen(video);
+
 /*document.addEventListener('click', function() {
     launchFullscreen(video);
     window.setTimeout(function exit() {
