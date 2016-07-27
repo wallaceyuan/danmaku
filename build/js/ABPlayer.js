@@ -174,13 +174,13 @@ var ABP = {
 				}),
 				playlist[0],
 		]));
-/*		container.appendChild(_("div", {
-					"className":"ABP-Text",
-			},[
+		container.appendChild(_("div", {
+					"className":"ABP-PlayBig",
+			}/*,[
 				_("input", {
 					"type":"text"
 				})
-		]));*/
+		]*/));
 		container.appendChild(_("div", {
 					"className":"ABP-Control"
 			},[
@@ -448,6 +448,11 @@ var ABP = {
 		var _p = playerUnit.getElementsByClassName("ABP-Play");
 		if(_p.length <= 0) return;
 		ABPInst.btnPlay = _p[0];
+		
+		var _pBig = playerUnit.getElementsByClassName("ABP-PlayBig");
+		if(_pBig.length <= 0) return;
+		ABPInst.btnPlayBig = _pBig[0];
+		
 		/** Bind the Loading Progress Bar **/
 		var pbar = playerUnit.getElementsByClassName("progress-bar");
 		if(pbar.length <= 0) return;
@@ -618,16 +623,38 @@ var ABP = {
 				}
 			});
 */
+
+			ABPInst.btnPlayBig.addEventListener("click", function(){
+				if(ABPInst.video.paused){
+					ABPInst.video.play();
+					this.className = "ABP-PlayBig ABP-Pause";
+					this.style.display ='none';
+
+					ABPInst.btnPlay.className = "button ABP-Play ABP-Pause";
+					ABPInst.btnPlay.style.display = "block";
+					ABPInst.btnFull.style.display ='block';
+					ABPInst.commentbtn.style.display ='block';
+					//ABPInst.playText[0].className = "tag ABP-Play ABP-Pause";
+				}else{
+					ABPInst.video.pause();
+					this.className = "ABP-PlayBig";
+					ABPInst.btnPlay.className = "button ABP-Play";
+					//ABPInst.playText[0].className = "tag ABP-Play";
+				}
+			});
 			ABPInst.btnPlay.addEventListener("click", function(){
 				if(ABPInst.video.paused){
 					ABPInst.video.play();
 					this.className = "button ABP-Play ABP-Pause";
+					ABPInst.btnPlayBig.style.display ='none';
 					ABPInst.btnFull.style.display ='block';
 					ABPInst.commentbtn.style.display ='block';
 					//ABPInst.playText[0].className = "tag ABP-Play ABP-Pause";
 				}else{
 					ABPInst.video.pause();
 					this.className = "button ABP-Play";
+					//ABPInst.btnPlayBig = "ABP-PlayBig ABP-Pause";
+					ABPInst.btnPlayBig.style.display ='block';
 					//ABPInst.playText[0].className = "tag ABP-Play";
 				}
 			});
