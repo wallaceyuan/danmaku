@@ -56,7 +56,7 @@
 				<div class="colInfo">
 					<p class="title"><?=$roominfo['title']?>直播间</p>
 <!-- 					<p class="int"><?=$roominfo['intro']?></p>
- -->					<p class="int">新闻坊播出时间 17：30—18:30</p>
+ -->					<p class="int">2016年7月12日 16：30</p>
 				</div>
 				<span>LIVE</span>
 				<em style="position: absolute;right: .7125rem;bottom: .346875rem;"></em>
@@ -96,8 +96,8 @@
 		}
 		console.log(wxInfo);
 		var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%">'+
-		                '<source src="<?= $roominfo['hls1']?>" type="video/mp4">'+
-		                '<source src="<?= $roominfo['hls2']?>" type="video/mp4">'+
+/*		                '<source src="http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8" type="video/mp4">'+
+*/		                '<source src="'+stream+'" type="video/mp4">'+
 		                '<p>Your browser does not support html5 video!</p>'+
 		            '</video>';
 		$('.videoW').append(videoH);

@@ -56,10 +56,9 @@
 				<div class="colInfo">
 					<p class="title"><?=$roominfo['title']?>直播间</p>
 <!-- 					<p class="int"><?=$roominfo['intro']?></p>
- -->					<p class="int">新闻坊播出时间 17：30—18:30</p>
+ -->					<p class="int">2016年7月12日 15：30</p>
 				</div>
 				<span>LIVE</span>
-				<em style="position: absolute;right: .7125rem;bottom: .346875rem;"></em>
 			</div>
 			<div class='content'>
 				<div class="contentBox">
@@ -80,7 +79,6 @@
 	<script src="http://114.80.151.109/spa/m/danmaku/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript">
 		var device = 'mobile',fullPage = false,videoState = false;
-		var stream = '<?= $roominfo['hls']?>'
 		if(!/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|android|iPod/i.test(navigator.userAgent.toLowerCase())){
 		    device = 'PC';
 		}
@@ -96,11 +94,31 @@
 		}
 		console.log(wxInfo);
 		var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%">'+
-		                '<source src="<?= $roominfo['hls1']?>" type="video/mp4">'+
-		                '<source src="<?= $roominfo['hls2']?>" type="video/mp4">'+
+		                '<source src="http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8" type="video/mp4">'+
+		                '<source src="http://kankan.live.bestvcdn.com.cn/live/program/live991/weixinxwzh/live.m3u8?se=kankan&ct=2&_cp=1&_fk=D6714859D317650F26E248D52AC343FF7AA7003B0410E0FBED976CCC43896E97" type="video/mp4">'+
 		                '<p>Your browser does not support html5 video!</p>'+
 		            '</video>';
 		$('.videoW').append(videoH);
+	</script>
+	<script type="text/javascript">
+		var video = document.getElementById('video-1');
+		console.log(video);
+		video.addEventListener("play", function () {
+			alert("play");
+		}, false);
+		video.addEventListener("error", function(fmt) {
+		    var errorcode=video.error.code;
+		    console.log(errorcode);
+		    if(errorcode===1){//取回过程被用户中止
+
+		    }else if(errorcode==2){// 当下载时发生错误
+		    	alert("下载时发生错误");
+		    }else if(errorcode==3){//当解码时发生错误
+		    	alert("解码时发生错误");
+		    }else if(errorcode==4){//不支持音频/视频
+		    	alert("当前环境不支持此类型视频");
+		    }
+		});
 	</script>
     <script src="http://skin.kankanews.com/v5/danmaku/js/ABPlayer.js"></script>
     <script src="http://skin.kankanews.com/v5/danmaku/js/CommentCoreLibrary.js"></script>

@@ -8,9 +8,8 @@ var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 var video = document.getElementsByTagName('video')[0];
 
 var mobile = false,
-    state = true,//用户被禁言的状态
+    state = true,
     inst;
-
 var mesRec = '';
     
 
@@ -18,10 +17,10 @@ if (/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|len
     mobile = true;
 }
 
-var socket = io.connect('http://danmaku.kankanews.com/wechat');
-/*    var socket = io.connect('http://172.24.24.63:3000/wechat');
+/*var socket = io.connect('http://danmaku.kankanews.com/wechat');
+*//*    var socket = io.connect('http://172.24.24.63:3000/wechat');
  var socket = io.connect('http://192.168.1.108:3000/wechat');*/
-socket.on('connect', function() {
+/*socket.on('connect', function() {
     var msgInsrt = '<p class="syinfo">\u623f\u95f4\u8fde\u63a5\u4e2d\u002e\u002e\u002e</p>';
     $('.listW').append(msgInsrt);
     socket.emit('userInit', {
@@ -30,28 +29,8 @@ socket.on('connect', function() {
         'nickName': wxInfo.nickname,
         'posterURL': wxInfo.headimgurl
     });
-    socket.emit('subscribe',{room:liveid});
-});
-
-
-var keyPrim     = "KKDanMaKuOnlineUser";
-var liveid = 6;
-var key = keyPrim+'wechat'+liveid;
-socket.emit('onlineRequest',{key:key});
-socket.on('giveOnline',function(data){
-    console.log(data);
-    $('.banner em').html(data.onlinesum);
-});
-socket.on('joinChat',function(data){
-    console.log(data);
-    $('.banner em').html(data.onlinesum);
-});
-socket.on('people.del',function(data){
-    $('.banner em').html(data.onlinesum);
-});
-
-
-socket.on('userStatus', function(data) {
+});*/
+/*socket.on('userStatus', function(data) {
     if (parseInt(data.status == 700)) {
         state = false;
     }
@@ -59,7 +38,7 @@ socket.on('userStatus', function(data) {
         '<p class="syinfo">\u5f39\u5e55\u8fde\u63a5\u4e2d\u002e\u002e\u002e</p>';
     $('.listW').append(msgInsrt);
     console.log(data);
-});
+});*/
 $('.text').on("keyup", function(k) {
     if (this.value == null) return;
     if (k != null && k.keyCode === 13) {
@@ -69,12 +48,8 @@ $('.text').on("keyup", function(k) {
         $('.text').blur();
         var msg = { message: vv, type: 0, up: 0, down: 0, perform: { color: 'red', fontSize: '16px' } };
         mesRec = msg;
-        if (state) {
-            socket.emit('createMessage', msg);
-        } else {
-            msg.nickName = wxInfo.nickname;
-            messageAdd(msg, true);
-        }
+        msg.nickName = wxInfo.nickname;
+        messageAdd(msg, true);
     }
 });
 
@@ -85,17 +60,12 @@ $('.inputLogin span').on('click', function() {
     $('.text').blur();
     var msg = { message: vv, type: 0, up: 0, down: 0, perform: { color: 'red', fontSize: '16px' } };
     mesRec = msg;
-    if (state) {
-        socket.emit('createMessage', msg);
-    } else {
-        msg.nickName = wxInfo.nickname;
-        messageAdd(msg, true);
-    }
+    msg.nickName = wxInfo.nickname;
+    messageAdd(msg, true);
 });
 
 
-socket.on('message.add', function(msg) {
-    console.log(msg);
+/*socket.on('message.add', function(msg) {
     messageAdd(msg, true);
 });
 socket.on('message.error', function(msg) {
@@ -116,16 +86,14 @@ socket.on('historyData', function(msgs) {
             messageAdd(his[k], false);
         }
     }
-});
+});*/
 
-/*var vidologinH = lib.flexible.rem2px(5.625);
-var judge = true;var videoH = vidologinH
-var videoHeight = (winWidth * 9 )/16;
+var vidologinH = lib.flexible.rem2px(5.625);
+var videoHeight = winWidth * 9 / 16;
 if (videoHeight > vidologinH) {
-    judge = false;
+    videoHeight = vidologinH;
 }
-console.log(winWidth,videoHeight,winWidth * 9);
-*/
+
 window.addEventListener("load", function() {
     $('.loading').css('display', 'none');
     inst = ABP.create(document.getElementById("load-player"), {
@@ -136,10 +104,9 @@ window.addEventListener("load", function() {
             }]
         },
         "width": '100%',
-        "height": '5.625',
+        "height": videoHeight,
         "mobile": mobile,
-        "comment": false,
-        "rem":true
+        "comment": false
     });
     if (window.orientation === 180 || window.orientation === 0) {
         resizeBlock();
@@ -154,7 +121,7 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
 
 
 function messageAdd(msg, flag) {
-    var msgInsrt = '<p class="ins"><em><img src="'+msg.posterURL+'"/></em><span>' + msg.nickName + ': </span>' + msg.message + '</p>';
+    var msgInsrt = '<p><span>' + msg.nickName + ': </span>' + msg.message + '</p>';
     $('.listW').append(msgInsrt);
     var objDiv = document.getElementById("listW");
     objDiv.scrollTop = objDiv.scrollHeight;
@@ -163,7 +130,7 @@ function messageAdd(msg, flag) {
         "text": msg.message,
         "size": 16
     };
-    if (flag && videoState ) {
+    if (flag) {
         inst.sendDanma(danmaku);
     }
 }
@@ -178,7 +145,6 @@ function resizeBlock() {
 function winHW(param) {
     var playerEl = $('.ABP-Unit');
     if (param == 'B') {
-        fullPage = true;
         $('.ABP-Unit').addClass('ABP-FullScreen');
         $('.bottomContent,.inputLogin').css('display', 'none');
         $('.ABP-Unit .ABP-Text').removeClass('shu');
@@ -189,28 +155,26 @@ function winHW(param) {
                 height: $(window).height()
             });
         } else {
-/*            $('video').css({
+            $('video').css({
                 'width':'100%',
                 "height":'100%'
             });
             //video[fullscreenvideo]();
             //launchFullScreen(document.documentElement);
-            launchFullscreen(video);*/
+            launchFullscreen(video);
         }
         setTimeout(function() {
             resizeBlock('heng');
             $('.loading').css('display', 'none');
         }, 800);
     } else {
-        fullPage = false;
-        if (isIos) {
-            playerEl.css({
-                width: $(window).width(),
-                height: '5.625rem'
-            });
-        }else{
+        playerEl.css({
+            width: $(window).width(),
+            height: '5.625rem'
+        });
+        if (!isIos) {
             //video[cancelfullscreenvideo]();
-            //exitFullscreen();
+            exitFullscreen();
         }
         $('.bottomContent,.inputLogin').css('display', 'block');
         $('.ABP-Unit').removeClass('ABP-FullScreen');
