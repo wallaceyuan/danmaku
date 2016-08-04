@@ -19,8 +19,8 @@ if (/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|len
 }
 
 /*var socket = io.connect('http://danmaku.kankanews.com/wechat');*/
-var socket = io.connect('http://172.24.26.18:3000/wechat');
-/*    var socket = io.connect('http://192.168.1.108:3000/wechat');*/
+//var socket = io.connect('http://172.24.26.18:3000/wechat');
+var socket = io.connect('http://192.168.1.108:3000/wechat');
 socket.on('connect', function() {
     var msgInsrt = '<p class="syinfo">\u623f\u95f4\u8fde\u63a5\u4e2d\u002e\u002e\u002e</p>';
     $('.listW').append(msgInsrt);

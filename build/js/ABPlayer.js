@@ -404,7 +404,7 @@ var ABP = {
 						}
 					}
 				});
-				video.addEventListener("pause", function(){
+/*				video.addEventListener("pause", function(){
 					videoState  = false;
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();
@@ -414,13 +414,13 @@ var ABP = {
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();
 					}
-				});
-/*				video.addEventListener("pause", function() {
+				});*/
+				video.addEventListener("pause", function() {
 					ABPInst.cmManager.stopTimer();
 				});
 				video.addEventListener("waiting", function() {
 					ABPInst.cmManager.stopTimer();
-				});*/
+				});
 				video.addEventListener("playing",function(){
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();

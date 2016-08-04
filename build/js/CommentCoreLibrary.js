@@ -689,7 +689,6 @@ var CoreComment = function() {
 		 * @return {undefined}
 		 */
 		set : function(y) {
-			console.log(288, "set");
 			/** @type {number} */
 			this._y = y;
 			if (!this.absolute) {
@@ -939,6 +938,11 @@ var ScrollComment = function(_super) {
 		_super.call(this, options, easing);
 		this.dur *= this.parent.options.scroll.scale;
 		this.ttl *= this.parent.options.scroll.scale;
+		if(this.text.length > this.parent.width /16){
+			this.dur = (this.parent.width + this.text.length*8 ) * this.dur / (this.parent.width + this.parent.width /16)
+			this.ttl = (this.parent.width + this.text.length*8  ) * this.ttl / (this.parent.width + this.parent.width /16)
+		}
+		console.log(this.dur,this.text.length,this.parent.width);
 	}
 	return __extends(Animation, _super), Object.defineProperty(Animation.prototype, "alpha", {
 		/**
@@ -966,11 +970,6 @@ var ScrollComment = function(_super) {
 		this.absolute = true;
 	}, Animation.prototype.update = function() {
 		/** @type {number} */
-		//var reWidth = this.width >50 ? 50:this.width
-		if(this.width >100 ){
-			this.dur = 4000 + (this.width/100 )*2
-		}
-		console.log(this.dur );
 		this.x = this.ttl / this.dur * (this.parent.width + this.width) - this.width;
 	}, Animation;
 }(CoreComment);
