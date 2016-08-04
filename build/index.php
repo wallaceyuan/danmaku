@@ -18,13 +18,13 @@
 			$roominfo = $wxdanmaku->roominfo;
 			$ri = json_encode($roominfo);
 			$ui = json_encode($userinfo);
-			setcookie($roomKey,$ri, time()+300*1);
-			setcookie($userKey,$ui, time()+300*1);
+			setcookie($roomKey,$ri, time()+60*1);
+			setcookie($userKey,$ui, time()+60*1);
 		}else{
 			$ri = json_encode($roominfo);
 			$ui = json_encode($userinfo);
-			setcookie($roomKey,$ri, time()+300*1);
-			setcookie($userKey,$ui, time()+300*1);
+			setcookie($roomKey,$ri, time()+60*1);
+			setcookie($userKey,$ui, time()+60*1);
 		}
 	}
 ?>
@@ -96,14 +96,14 @@
 		}
 		console.log(wxInfo);
 		var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%">'+
-		                '<source src="<?= $roominfo['hls1']?>" type="video/mp4">'+
-		                '<source src="<?= $roominfo['hls2']?>" type="video/mp4">'+
+/*		                '<source src="<?= $roominfo['hls1']?>" type="video/mp4">'+
+*/		                '<source src="<?= $roominfo['hls2']?>" type="video/mp4">'+
 		                '<p>Your browser does not support html5 video!</p>'+
 		            '</video>';
 		$('.videoW').append(videoH);
 	</script>
     <script src="http://skin.kankanews.com/v5/danmaku/js/ABPlayer.js"></script>
-    <script src="http://skin.kankanews.com/v5/danmaku/js/CommentCoreLibrary.js"></script>
+    <script src="http://114.80.151.109/spa/m/danmaku/js/CommentCoreLibrary.js"></script>
     <script src="http://danmaku.kankanews.com/socket.io/socket.io.js"></script>
     <script src="http://skin.kankanews.com/v5/danmaku/js/index.js"></script>
     <!--begin 看看统计代码-->

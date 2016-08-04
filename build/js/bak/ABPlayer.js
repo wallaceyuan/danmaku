@@ -108,7 +108,7 @@ var ABP = {
 		}
 		// 'elem' is the parent container in which we create the player.
 		if(!hasClass(elem, "ABP-Unit")){
-			//console.log(params.rem);
+			console.log(params.rem);
 			// Assuming we are injecting
 			var container = _("div", {
 				"className": "ABP-Unit",
@@ -415,12 +415,6 @@ var ABP = {
 						ABPInst.cmManager.startTimer();
 					}
 				});
-/*				video.addEventListener("pause", function() {
-					ABPInst.cmManager.stopTimer();
-				});
-				video.addEventListener("waiting", function() {
-					ABPInst.cmManager.stopTimer();
-				});*/
 				video.addEventListener("playing",function(){
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();
@@ -522,13 +516,13 @@ var ABP = {
 				ABPInst.cmManager.setBounds();
 			};
 			ABPInst.divComment.style.bottom = 
-				(ABPInst.controlBar.offsetHeight /*+ ABPInst.divTextField.offsetHeight*/) + "px";
+				(ABPInst.controlBar.offsetHeight + ABPInst.divTextField.offsetHeight) + "px";
 				
 			var listenerMove = function(){
 				ABPInst.controlBar.style.display = "";
 				ABPInst.divTextField.style.display = "";
 				ABPInst.divComment.style.bottom = 
-					(ABPInst.controlBar.offsetHeight/* + ABPInst.divTextField.offsetHeight*/) + "px";
+					(ABPInst.controlBar.offsetHeight + ABPInst.divTextField.offsetHeight) + "px";
 				try{
 					if (timer != -1){
 						clearInterval(timer);

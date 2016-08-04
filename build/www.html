@@ -1,0 +1,1029 @@
+<html>
+
+<head>
+    <title> 电子监控违法 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta name="Generator" content="EditPlus">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <style>
+    body {
+        background-color: #0a68bf;
+        font-family: "微软雅黑", arial;
+    }
+    
+    .mybtn {
+        background: none;
+        border: none;
+        background: #eee;
+        border-radius: 4px;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        color: #333 !important;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0 auto;
+        display: block;
+        text-align: center
+    }
+    
+    .outDiv {
+        position: absolute;
+        top: 4%;
+        left: 5%;
+        width: 90%;
+        height: 60%;
+    }
+    
+    .outDiv .nDiv {
+        position: absolute;
+        width: 90%;
+        left: 5%;
+        top: 0%;
+    }
+    
+    .outDiv .nDiv2 {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+    
+    .outDiv .msgStrong {
+        color: #fff;
+        font-family: Microsoft YaHei;
+        font-size: 2em;
+    }
+    
+    .outDiv .nDiv .input1 {
+        -webkit-appearance: none;
+        background-color: transparent;
+        border: 0;
+        width: 100%;
+        color: #fff;
+        font-family: Microsoft YaHei;
+        font-size: 1.2em;
+        border-radius: 0;
+    }
+    
+    .outDiv .nDiv .p1 {
+        font-family: Microsoft YaHei;
+        color: #fff;
+        font-size: 1.4em;
+        margin-bottom: 4px;
+        display: block;
+        overflow: hidden;
+    }
+    
+    .outDiv .nDiv .eDiv {
+        margin-top: 18%;
+    }
+    
+    .outDiv .nDiv .eDiv .cDiv {
+        border-radius: 6px 6px 0 0;
+        width: 100%;
+        height: 32px;
+        background-color: #383838;
+        vertical-align: middle;
+        text-align: center;
+    }
+    
+    .outDiv .nDiv .eDiv .input3 {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .outDiv .nDiv .eDiv .strong1 {
+        font-family: Microsoft YaHei;
+        color: #aaadb4;
+        padding-top: -10px;
+    }
+    
+    .outDiv .nDiv .tDiv {
+        border-radius: 10px;
+        width: 100%;
+        height: 40px;
+        background-color: #fff;
+        text-align: center;
+        border: none;
+    }
+    
+    .outDiv .nDiv .tDiv .input2 {
+        border-radius: 10px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        text-align: left;
+        font-size: 1.2em;
+        color: #aaadb4;
+        font-family: Microsoft YaHei;
+        padding-left: 10px;
+    }
+    
+    .outDiv .nDiv .tDiv .input3 {
+        border-radius: 10px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        text-align: left;
+        font-size: 1.2em;
+        color: #aaadb4;
+        font-family: Microsoft YaHei;
+        padding-left: 60px;
+    }
+    
+    .outDiv .nDiv .eDiv2 {
+        margin-top: 6%;
+        text-align: center;
+    }
+    
+    .outDIv .nDiv .msgP {
+        color: #92d7ea;
+        margin-top: 10%;
+        font-size: 0.6em;
+        float: left;
+    }
+    
+    .outDIv .nDiv span.i {
+        border: 1px solid #1f93d3;
+        border-radius: 1.2em;
+        color: #1f93d3;
+        display: inline-block;
+        font-size: 1em;
+        height: 1.2em;
+        line-height: 1.2em;
+        text-align: center;
+        width: 1.2em;
+    }
+    
+    .outDIv .nDiv .p2 {
+        color: #a4a3a3;
+        display: inline-block;
+        float: right;
+        font-size: 0.8em;
+        line-height: 2em;
+        margin-right: 10px;
+    }
+    
+    .hiddenDiv {
+        display: none;
+    }
+    
+    table,
+    tr,
+    td {
+        border: 1px solid #dddddd;
+        width: 20px;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    .list ul li:first-child {
+        border-top: 0 none;
+    }
+    
+    .list ul li {
+        border-top: 1px solid #b9e4f4;
+        list-style: outside none none;
+        padding: 16px 0;
+        position: relative;
+    }
+    
+    .list ul li a {
+        display: block;
+        position: relative;
+        color: #333333;
+        text-decoration: none;
+    }
+    
+    .list ul li p.title {
+        font-size: 1em;
+        height: 1em;
+        line-height: 1em;
+        overflow: hidden;
+        position: relative;
+        width: 70%;
+        color: #fff;
+    }
+    
+    .list ul li p.blue {
+        color: #00aced;
+        font-size: 0.8em;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0;
+    }
+    
+    .list ul li div.shuomin {
+        color: #92d7ea;
+        display: block;
+        font-size: 0.8em;
+        height: 1em;
+        line-height: 1.2em;
+        margin-bottom: 1.2em;
+        margin-top: 1.2em;
+        overflow: hidden;
+        width: 85%;
+    }
+    
+    .lb {
+        height: 1em;
+        line-height: 1em;
+    }
+    
+    .list {
+        margin: 0;
+    }
+    
+    .list ul {
+        margin: 0 10px;
+        padding: 0;
+    }
+    
+    .list ul li em {
+        color: #2b2b2b;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 20px;
+    }
+    
+    .list ul li i {
+        bottom: 10px;
+        position: absolute;
+        right: 0;
+    }
+    
+    .list ul li em span {
+        color: #ea0606;
+    }
+    
+    .car-select {
+        width: 96%;
+        height: 38px;
+        border: none;
+        font-size: 1em;
+        font-family: Microsoft YaHei;
+        color: #aaadb4;
+        background: none;
+        -webkit-appearance: none;
+        outline: none;
+        background: url('../images/arrow2.png') no-repeat center right;
+        background-size: 12px;
+    }
+    
+    .car-select.pai {
+        width: 40px;
+        height: 40px;
+        line-height: 42px;
+        position: absolute;
+        left: 8px;
+        background: url('../images/arrow2.png') no-repeat right 19px;
+        background-size: 12px;
+    }
+    
+    .inote {
+        border: 1px solid #4f5d60;
+        border-radius: 1.2em;
+        color: #4f5d60;
+        display: inline-block;
+        font-size: 1em;
+        height: 1.2em;
+        line-height: 1.2em;
+        text-align: center;
+        width: 1.2em;
+    }
+    
+    #showNote {
+        color: #4f5d60;
+        display: inline-block;
+        float: right;
+        font-size: 0.8em;
+        line-height: 100%;
+        margin-right: 10px;
+    }
+    
+    .inote {
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    
+    #showNote {
+        float: left;
+    }
+    
+    #showNote span {
+        line-height: 120% !important;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    
+    ul,
+    ol,
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0
+    }
+    
+    article span.first {
+        font-weight: 700;
+        display: inline-block;
+        margin-top: 13px;
+        margin-left: 10px;
+        padding-bottom: 7px;
+        border-bottom: 2px solid #1f93d3;
+        color: #ffffff;
+        text-align: left;
+    }
+    
+    article ul {
+        margin-top: -2px;
+        margin-left: 10px;
+        padding-top: 12px;
+        margin-right: 10px;
+        border-top: 2px solid #c1deee;
+        color: #ffffff;
+        font-family: "微软雅黑"
+    }
+    
+    article ul li i {
+        display: inline-block;
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ffffff;
+        border-radius: 16px;
+        color: #ffffff;
+        text-align: center;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    
+    article ul li span {
+        line-height: 1.5
+    }
+    
+    article ul li em {
+        color: #fc6c6c;
+    }
+    
+    article ul img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    
+    article ul li {
+        margin-bottom: 10px;
+    }
+    
+    .myright1 {
+        width: 60%;
+        float: right;
+        border-radius: 5;
+        overflow: hidden;
+    }
+    
+    .myleft1 {
+        background: #fff;
+        width: 35%;
+        float: left;
+        border: 1px solid #ccc;
+        border-radius: 5;
+        overflow: hidden;
+    }
+    
+    .input2 {
+        border: medium none;
+        border-radius: 10px;
+        color: #aaadb4;
+        font-family: Microsoft YaHei;
+        font-size: 1.2em;
+        height: 40px;
+        padding-left: 10px;
+        text-align: left;
+        width: 100%;
+    }
+    </style>
+    <script src="//hm.baidu.com/hm.js?7b458afe02f4b5810ec09c6fb19f9ed6"></script>
+    <script type="text/javascript" src="http://ud.sh.qq.com/statics/js/jquery-1.7.1.min.js?v=20130424" charset="utf-8"></script>
+    <script type="text/javascript" src="http://api.guard.qcloud.com:80/v1/captcha/query?cs-secretid=AKIDvnV6Klhh09cJDmsLipCMZdw4VnS0LhyW&amp;cs-nonce=1765864365&amp;cs-timestamp=1470293772&amp;uid=1&amp;userip=222.68.17.28&amp;buid=1&amp;sceneid=1&amp;captype=8&amp;cs-sig=pMOFnktS64SXD5c2lupzYoU7mR8%3D"></script>
+    <script src="http://captcha.guard.qcloud.com/getsig?appid=1251026295&amp;uid=1&amp;buid=1&amp;sceneid=1&amp;captype=8&amp;sig=JcGVupafSQsyKlzaFXdlhQg9CuaRt95p1nmWzGpU6z1rYsm-cqLyRVt4gP86hcxF&amp;0.2195076282513908"></script>
+</head>
+
+<body>
+    <div id="oneDiv" class="outDiv">
+        <div class="nDiv">
+            <div style="padding-top:2%;width:100%;margin:0 auto;color:#f5eb32;font-size:14px;line-height:24px;">特别提醒:为了提高微信平台查询功能的及时行和完整度,即日起凡需要通过本公众账号查询的机动车,驾驶人违法信息的用户,请先至交通安全综合服务管理平台(http://sh.122.gov.cn)上海市公安局交通警察总队官方网站)进行用户注册(也可以点击该网址,在手机上完成注册.注意:需在横屏状态下填写。)。自6月15日起,未在该网站进行注册的用户,将无法查询相关违法信息,特此告知。感谢您的理解和配合!</div>
+            <div>
+                <p class="p1">
+                    <span>车牌号:</span>
+                    <a href="instruction.html" class="p2">
+                        <span class="i">i</span>
+                        <span class="warning">查询说明</span>
+                    </a>
+                </p>
+                <div class="tDiv">
+                    <select id="paiSelect" value="沪" list="cars" class="car-select pai">
+                        <option value="京">京</option>
+                        <option selected="selected" value="沪">沪</option>
+                        <option value="港">港</option>
+                        <option value="吉">吉</option>
+                        <option value="鲁">鲁</option>
+                        <option value="冀">冀</option>
+                        <option value="湘">湘</option>
+                        <option value="青">青</option>
+                        <option value="苏">苏</option>
+                        <option value="浙">浙</option>
+                        <option value="粤">粤</option>
+                        <option value="台">台</option>
+                        <option value="甘">甘</option>
+                        <option value="川">川</option>
+                        <option value="黑">黑</option>
+                        <option value="蒙">蒙</option>
+                        <option value="新">新</option>
+                        <option value="津">津</option>
+                        <option value="渝">渝</option>
+                        <option value="澳">澳</option>
+                        <option value="辽">辽</option>
+                        <option value="豫">豫</option>
+                        <option value="鄂">鄂</option>
+                        <option value="晋">晋</option>
+                        <option value="皖">皖</option>
+                        <option value="赣">赣</option>
+                        <option value="闽">闽</option>
+                        <option value="琼">琼</option>
+                        <option value="陕">陕</option>
+                        <option value="云">云</option>
+                        <option value="贵">贵</option>
+                        <option value="藏">藏</option>
+                        <option value="宁">宁</option>
+                        <option value="桂">桂</option>
+                    </select>
+                    <input id="numberInput1" type="text" value="" class="input3" maxlength="8">
+                </div>
+            </div>
+            <div>
+                <p class="p1">发动机号:</p>
+                <div class="tDiv">
+                    <input id="numberInput2" type="text" value="请输入正确的发动机号" class="input2" maxlength="30">
+                </div>
+            </div>
+            <div>
+                <p class="p1">身份证号:</p>
+                <div class="tDiv">
+                    <input id="numberInput4" type="text" value="请输入正确的身份证" class="input2" maxlength="18">
+                </div>
+            </div>
+            <div>
+                <p class="p1">号牌种类:</p>
+                <div class="tDiv">
+                    <select id="typeSelect" class="car-select">
+                        <option value="02/小型汽车号牌" selected="">小型汽车号牌</option>
+                        <option value="01/大型汽车号牌">大型汽车号牌</option>
+                        <option value="03/使馆汽车号牌">使馆汽车号牌</option>
+                        <option value="04/领馆汽车号牌">领馆汽车号牌</option>
+                        <option value="05/境外汽车号牌">境外汽车号牌</option>
+                        <option value="06/外籍汽车号牌">外籍汽车号牌</option>
+                        <option value="07/两、三轮摩托车号牌">两、三轮摩托车号牌</option>
+                        <option value="08/轻便摩托车号牌">轻便摩托车号牌</option>
+                        <option value="09/使馆摩托车号牌">使馆摩托车号牌</option>
+                        <option value="10/领馆摩托车号牌">领馆摩托车号牌</option>
+                        <option value="11/境外摩托车号牌">境外摩托车号牌</option>
+                        <option value="12/外籍摩托车号牌">外籍摩托车号牌</option>
+                        <option value="13/农用运输车号牌">农用运输车号牌</option>
+                        <option value="14/拖拉机号牌">拖拉机号牌</option>
+                        <option value="15/挂车号牌">挂车号牌</option>
+                        <option value="16/教练汽车号牌">教练汽车号牌</option>
+                        <option value="17/教练摩托车号牌">教练摩托车号牌</option>
+                        <option value="18/试验汽车号牌">试验汽车号牌</option>
+                        <option value="19/试验摩托车号牌">试验摩托车号牌</option>
+                        <option value="20/临时入境汽车号牌">临时入境汽车号牌</option>
+                        <option value="21/临时入境摩托车号牌">临时入境摩托车号牌</option>
+                        <option value="22/临时行驶车号牌">临时行驶车号牌</option>
+                        <option value="23/警用汽车号牌">警用汽车号牌</option>
+                        <option value="24/警用摩托号牌">警用摩托号牌</option>
+                    </select>
+                </div>
+            </div>
+            <div style="padding-top:0px">
+                <p class="p1">验证码:</p>
+                <div class="myleft1" style="border:none; background:none; padding-top:7px">
+                    <div class="imgcode" style="width:80px">
+                        <img id="tc_vcode_img" style="width:100%" src="http://captcha.guard.qcloud.com/getcap?appid=1251026295&amp;uid=1&amp;buid=1&amp;sceneid=1&amp;captype=8&amp;sig=b01gY3QMagCRbNLVSidUP6OfR_mlVf0e4k1nH1w4Bv1OhTfDVFfppYONhuXFcM36_dfTvJSwzB-f-GZ2SzadzYqLQbhcXKEx3Ntes9xS1H7Bvo*&amp;0.12280347295199823" onclick="javascript:TSOCapObj.refresh();">
+                    </div>
+                </div>
+                <div class="myright1">
+                    <!--验证码显示-->
+                    <input type="text" value="" name="vcode" id="tc_vcode_input" placeholder="请输入验证码" class="input2" maxlength="6">
+                    <input type="hidden" value="" name="ticket" id="ticket">
+                </div>
+            </div>
+            <div class="eDiv">
+                <input id="checkboxDiv" type="checkbox" class="input3">
+                <strong class="strong1">记住我</strong>
+            </div>
+            <div class="eDiv2" id="checksubDiv">
+                <img src="../images/checksub.png" style="width:70%;">
+            </div>
+            <div class="eDiv" style="display:none;">
+                <div class="cDiv">
+                    <p style="font-family:Microsoft YaHei; color:#fff;  line-height:32px;">查询说明</p>
+                </div>
+                <div style="border-radius:0 0 6px 6px; width:100%; height:160px; background-color:#fff; ">
+                    <p style="float:left; margin: 6px; font-family:Microsoft YaHei; font-size:0.8em; text-indent: 2em; text-align: left;">1. 凡使用旧版驾驶证的司机朋友查询时需要在原八位档案编号前加<em style="color:#fc6c6c; font-style: normal;">3100</em>，即如果您的档案编号为04119602,那么您需要输入<em style="color:#fc6c6c; font-style: normal;">3100</em>04119602方能查询。</p>
+                    <p style="float:left; margin: 6px; font-family:Microsoft YaHei; font-size:0.8em; text-indent: 2em; text-align: left;">2. 交通违法行为裁决后，由于数据传输等工作程序，一般需要三~五个工作日。感谢您的支持和配合！</p>
+                </div>
+            </div>
+            <div style="text-align: center;color: #fff;width: 100%;font-size: 16px;margin-top:20px;padding-bottom:50px;">
+                上海市公安局交警总队联合腾讯大申网共同推出
+            </div>
+        </div>
+    </div>
+    <div id="twoDiv" class="outDiv  hiddenDiv">
+    </div>
+    <div id="listDiv" class="list hiddenDiv">
+        <ul>
+        </ul>
+    </div>
+    <div id="threeDiv" class="outDiv hiddenDiv">
+        <p class="msgStrong">您已经报名成功，请准时入场，感谢您的参与！</p>
+    </div>
+    <article class="notes1" style="display:none">
+        <span class="first">注意事项:</span>
+        <ul>
+            <li>
+                <i>1</i>
+                <span>查询到机动车有未处理完毕的，请违法车辆驾驶人携带本人有效身份证件、驾驶证和车辆行驶证，在15日内到指定地点接受裁决；违法车辆驾驶人对违法事实无异议的，也可到本市各交警支（大）队违法受理点接受裁决。
+     外省市号牌机动车在本市的违法记录已转递至机动车登记地的，也可以到机动车登记地公安机关交通管理部门接受裁决；本市号牌机动车在外省市的违法行为，也可以到违法行为发生地公安机关交通管理部门接受裁决。</span>
+            </li>
+            <li>
+                <i>2</i>
+                <span>对已在本市接受处罚但尚未缴纳罚款的，可通过本市工商银缴纳罚款，罚款缴纳方式：http://www.shjtaq.com/dwfwck/dwfwck.asp。
+     对已在外省市接受处罚但尚未缴纳罚款的，请至处罚机关所在地缴纳罚款。</span>
+            </li>
+            <li>
+                <i>3</i>
+                <span>对违法事实无异议且罚款金额为200元以下（含）的，违法车辆驾驶人可持本人工商银行上海分行牡丹畅通卡通过上海市工商银行的电话银行(95588)、网上银行(www.icbc.com.cn或www.sh.icbc.com.cn)或者多媒体自助终端自助裁决并缴纳罚款(同时实行记分管理)。
+     对违法事实无异议，但违法车辆驾驶人没有办理牡丹畅通卡或者使用牡丹畅通卡不予自助裁决的，可到本市各交警支（大）队违法受理点接受裁决。</span>
+            </li>
+            <li>
+                <i>4</i>
+                <span>对违法事实有异议或者无法确定违法车辆驾驶人的，请到以下违法受理点接受裁决：<br>
+     （一）机动支队采集的违法记录，“固定电子警察”请至国权北路579-2号（近殷高路）或者古宜路131号（近宜山路）裁决，“违法停车”请至古宜路131号（近宜山路）裁决；<br>
+     （二）各交警支（大）队采集的违法记录（主要是流动电子警察和违法停车），请至违法行为发生地的交警支（大）队裁决；<br>
+     （三）外省市交警支（大）队采集的本市号牌车辆的违法记录，请向违法行为发生地公安机关交通管理部门提出，由违法行为发生地公安机关交通管理部门依法裁决；无法确定违法车辆驾驶人的，也可到本市机动支队违法受理点接受裁决。</span>
+            </li>
+            <li style="padding-left:22px">
+                更多信息，请查询上海交通安全信息网
+                <br>
+                <a style="color:#fff" href="http://www.shjtaq.com/">http://www.shjtaq.com/</a> </li>
+            <p style="padding-left:22px">(以上工作日是指法定标准工作日)</p>
+        </ul>
+        <div class="mybtn" id="backtoList2" style="margin-bottom:15px;">返回</div>
+    </article>
+    <script>
+    window.MOUSE_CLICK = 'ontouchstart' in document ? 'touchstart' : 'click';
+    window.MOUSE_DOWN = 'ontouchstart' in document ? 'touchstart' : 'mousedown';
+    window.MOUSE_UP = 'ontouchend' in document ? 'touchend' : 'mouseup';
+    window.MOUSE_MOVE = 'ontouchmove' in document ? 'touchmove' : 'mousemove';
+    $(function() {
+        $(document).on(MOUSE_CLICK, '#showNote', function() {
+            $(".notes1").show();
+            $("#twoDiv,#listDiv").hide();
+        });
+        $(document).on(MOUSE_CLICK, '#backtoList', function() {
+            setTimeout(function() {
+                $("#listDiv").show();
+                $(".notes1").hide();
+                $("#twoDiv").hide();
+            }, 500);
+        });
+        $(document).on(MOUSE_CLICK, '#backtoList2', function() {
+            setTimeout(function() {
+                $("#listDiv").hide();
+                $(".notes1").hide();
+                $("#twoDiv").show();
+            }, 500);
+        });
+        $(document).on(MOUSE_CLICK, '.mycheckbox', function() {
+            $('.mycheck').toggleClass('on');
+            var a = $(this).find('input')[0];
+            a.checked = !a.checked;
+        })
+
+
+        if (window.top != window && document.referrer) {
+            var a = document.createElement("a");
+            a.href = document.referrer;
+            var host = a.hostname;
+
+            var endsWith = function(str, suffix) {
+                return str.indexOf(suffix, str.length - suffix.length) !== -1;
+            }
+
+            if (!endsWith(host, '.dashenw.cn')) {
+                top.location.href = "http://s.dashenw.cn/sht/404.html";
+            }
+        }
+
+
+    });
+    if (window.localStorage) {
+        if (localStorage.getItem("dzwz_all_str")) {
+            var zlAry = localStorage.getItem("dzwz_all_str").split("_");
+            $("#numberInput1").attr("value", zlAry[0]);
+            $("#numberInput2").attr("value", zlAry[1]);
+            $('#typeSelect option:selected').html(zlAry[2]);
+            $("#numberInput4").attr("value", zlAry[3]);
+        }
+
+    }
+    $("#numberInput1").on("click", function(e) {
+        var value = $("#numberInput1").val();
+        if (value == "请输入正确的车牌号") $("#numberInput1").attr("value", "");
+    });
+
+    $("#numberInput2").on("click", function(e) {
+        var value = $("#numberInput2").val();
+        if (value == "请输入正确的发动机号") $("#numberInput2").attr("value", "");
+    });
+
+    $("#numberInput4").on("click", function(e) {
+        var value = $("#numberInput4").val();
+        if (value == "请输入正确的身份证") $("#numberInput4").attr("value", "");
+    });
+
+
+    $("#checksubDiv").on("click", function(e) {
+
+        var selectType = $('#typeSelect option:selected').val();
+        var selectPai = $('#paiSelect option:selected').val();
+        var selectTypeAry = selectType.split("/");
+        var s_type = selectTypeAry[1]; //修改新API
+        var cp_number = $("#numberInput1").val();
+        var fdj_number = $("#numberInput2").val();
+        var sfz_number = $("#numberInput4").val(); //身份证
+
+        cp_number = selectPai + cp_number;
+
+        if (s_type == "" || cp_number == "" || cp_number == "请输入正确的车牌号" || fdj_number == "" || fdj_number == "请输入正确的发动机号" || sfz_number == "" || sfz_number == "请输入正确的身份证") {
+            alert("请完整填写资料!");
+        } else {
+            isReturn = false;
+            verify();
+            var interval = setInterval(function() {
+                if (isReturn == true) {
+                    if (typeof(ticket) != undefined && ticket != '') {
+                        $.getScript("/sht/api/dzjk_api.php?hphm=" + cp_number + "&hpzl=" + s_type + "&fdjh=" + fdj_number + "&sfz=" + sfz_number + "&ticket=" + ticket + "&callback=checksub2");
+                    }
+                    clearInterval(interval);
+                }
+            }, 500);
+
+        }
+
+    })
+
+    //说明
+    function getDetailInfo() {
+        var html_strss = "";
+
+        html_strss += ' <div class="eDiv">' + '<div class="cDiv" style="  border-radius: 6px 6px 0 0;height: 32px; text-align: center; vertical-align: middle; width: 100%; margin-top:20px" >'
+            /*+ '<p style="font-family:Microsoft YaHei; color:#fff;  line-height:32px;">说明</p> </div>'
+				          + '<div style="border-radius:0 0 6px 6px; width:100%; height:150px; background-color:#fff; ">'
+						  + '<p style="float:left; margin: 6px; font-family:Microsoft YaHei; font-size:0.8em; text-indent: 2em; text-align: left;">'*/
+            + '<div id="showNote" style="color:#fff">处理注意事项（点击查看）</div>'
+            /*+ '如果你对上述违法事实有异议的，请向违法行为发生地公安机关交通管理部门提出，由违法行为发生地公安机关交通管理部门依法裁决。对已在外省市接受处罚但尚未缴纳罚款的，请至处罚机关所在地缴纳罚款。<br><br></p>'*/
+            + '</div></div>' + ' <div class="mybtn" id="backtoList" style="margin-top:30px">返回</div><br><br>';
+
+        return html_strss;
+    }
+
+    //显示详细信息
+    function showDetail(n) {
+
+        $("#listDiv").hide();
+        $("#twoDiv").show();
+        $("#twoDiv #dt_" + n).show().siblings().hide();
+        //console.log($("#twoDiv #dt_"+n).siblings());
+    }
+
+    function trasCode(_code) {
+        if (_code) {
+            var opctionValue = '';
+            switch (_code) {
+                case "01":
+                    opctionValue = "大型汽车号牌";
+                    break;
+
+                case "02":
+                    opctionValue = "小型汽车号牌";
+                    break;
+
+                case "03":
+                    opctionValue = "使馆汽车号牌";
+                    break;
+
+                case "04":
+                    opctionValue = "领馆汽车号牌";
+                    break;
+
+                case "05":
+                    opctionValue = "境外汽车号牌";
+                    break;
+
+                case "06":
+                    opctionValue = "外籍汽车号牌";
+                    break;
+
+                case "07":
+                    opctionValue = "两、三轮摩托车号牌";
+                    break;
+
+                case "08":
+                    opctionValue = "轻便摩托车号牌";
+                    break;
+
+                case "09":
+                    opctionValue = "使馆摩托车号牌";
+                    break;
+
+                case "10":
+                    opctionValue = "领馆摩托车号牌";
+                    break;
+
+                case "11":
+                    opctionValue = "境外摩托车号牌";
+                    break;
+
+                case "12":
+                    opctionValue = "外籍摩托车号牌";
+                    break;
+
+                case "13":
+                    opctionValue = "农用运输车号牌";
+                    break;
+
+                case "14":
+                    opctionValue = "拖拉机号牌";
+                    break;
+
+                case "15":
+                    opctionValue = "挂车号牌";
+                    break;
+
+                case "16":
+                    opctionValue = "教练汽车号牌";
+                    break;
+
+                case "17":
+                    opctionValue = "教练摩托车号牌";
+                    break;
+
+                case "18":
+                    opctionValue = "试验汽车号牌";
+                    break;
+
+                case "19":
+                    opctionValue = "试验摩托车号牌";
+                    break;
+
+                case "20":
+                    opctionValue = "临时入境汽车号牌";
+                    break;
+
+                case "21":
+                    opctionValue = "临时入境摩托车号牌";
+                    break;
+
+                case "22":
+                    opctionValue = "临时行驶车号牌";
+                    break;
+
+                case "23":
+                    opctionValue = "警用汽车号牌";
+                    break;
+
+                case "24":
+                    opctionValue = "警用摩托号牌";
+                    break;
+            }
+        }
+
+        return opctionValue;
+    }
+
+
+    function checksub2(a) {
+        switch (a[0]["fenlei"].toString()) {
+            case "0":
+                alert("无违章记录");
+                break;
+
+            case "-1":
+                alert("用户未注册,请访问http://www.sh.122.gov.cn/注册"); //新API修改
+                break;
+
+            case "-2":
+                alert("数据更新中,请稍后再试！");
+                break;
+
+            case "-3":
+                alert("车牌号错误，请核对后再试！");
+                break;
+
+            case "-4":
+                alert("发动机号错误，请核对后再试！");
+                break;
+
+            case "-5":
+                alert("驾驶号错误，请核对后再试！");
+                break;
+
+            case "-6":
+                alert("输入验证码错误，请点击验证码刷新！");
+                break;
+
+
+            default:
+
+                $("#oneDiv").addClass('hiddenDiv');
+                $("#twoDiv").removeClass('hiddenDiv');
+                var html_str = '';
+
+                var html_list = "";
+
+                var aryLength = a.length;
+                var number = '';
+                var msg = '';
+                var _fxjg = ''; //裁决机关
+                var _wsbh = ''; //决定书号
+                var _hphm = ''; //号牌号码
+                var _hpzl = ''; //号牌种类
+                var _name = ''; //姓名
+                var _wfsj = ''; //违法时间
+                var _wfdd = ''; //违法地点
+                var _wfnr = ''; //违法内容
+
+
+
+
+                for (var i = 0; i < aryLength; i++) {
+                    numberType = a[i]["fenlei"];
+                    msg = a[i]["clbj"];
+                    _fxjg = a[i]["cjjg"]
+                    _hphm = a[i]["vehnum"];
+                    _hpzl = trasCode("02");
+                    // _name = a[i]["dsr"];
+                    _wfsj = a[i]["violatetime"];
+                    _wfdd = a[i]["roadnum"];
+                    _wfnr = a[i]["wznr"];
+                    _wftk = a[i]["wftk"];
+
+                    //新API 修改	
+                    switch (numberType) {
+                        case '1':
+                        case '2':
+                            _wsbh = a[i]["tzsh"];
+                            break;
+
+                        case '3':
+                            break;
+
+                        case '4':
+                            _wsbh = a[i]["jdsbh"];
+
+                            break;
+
+                        case '5':
+                            _wsbh = a[i]["pzbh"];
+                            break;
+                    }
+
+                    html_str += '<div class="nDiv2" id="dt_' + i + '">' + '<div style="width:30%; height:26px; background-color:#c4c4c4; border-radius:6px 6px 0 0; margin:0px; text-align:center; line-height:26px;">' + '<strong>序号 ' + (i + 1) + '</strong>' + '</div>' + '<div style="width:100%; height:26px; background-color:#c4c4c4; border-radius:0 6px 0 0; margin-top:-1px; text-align:center; line-height:26px;">' + '<strong>违法信息</strong>' + '</div>' + '<div style="width:100%; height:auto; background-color:#fff; border-radius:0 0 6px 6px; padding-bottom:6px;">' + '<table style="text-align:center; width:100%; height:auto;">' + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">违法时间</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _wfsj + '</p>' + '</td>' + '</tr>'
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">凭证编号</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _wsbh + '</p>' + '</td>' + '</tr>'
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">违法地点</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _wfdd + '</p>' + '</td>' + '</tr>'
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">采集机关</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _fxjg + '</p>' + '</td>' + '</tr>'
+
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">违法内容</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _wfnr + '</p>' + '</td>' + '</tr>'
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">违法条款</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _wftk + '</p>' + '</td>' + '</tr>'
+
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">号牌号码</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + _hphm + '</p>' + '</td>' + '</tr>'
+
+                    + '<tr>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">执行状态</p>' + '</td>' + '<td>' + '<p style="font-family:Microsoft YaHei; font-size:0.8em;">' + msg + '</p>' + '</td>' + '</tr>'
+
+                    + '</table>' + '</div>' + getDetailInfo() //说明信息
+                        + '</div>';
+
+
+
+                    //列表页面
+                    html_list += '<li>' + '<a href="javascript:showDetail(' + i + ')">' + '<p class="title">' + _wfdd + '</p>' + '<p class="blue">' + msg + '</p>' + '<div class="shuomin">' + _wfnr + '</div>' + '<em>' + _wfsj + '</em>';
+                    var ftttt = numberType;
+                    if (ftttt == 1) {
+                        html_list += '<em>本市电子监控</em>';
+                    } else if (ftttt == 2) {
+                        html_list += '<em>本市违法停车</em>';
+                    } else if (ftttt == 3) {
+                        html_list += '<em>外地电子监控</em>';
+                    }
+                    html_list += '<i><img width="10" height="17" src="../images/arrow.png"></i>' + '</div></a></li>';
+                }
+
+                $("#twoDiv").html(html_str);
+                $("#twoDiv").addClass('hiddenDiv');
+
+                $("#listDiv ul").html(html_list);
+                $("#listDiv").removeClass('hiddenDiv');
+
+
+
+                var selectType = $('#typeSelect option:selected').val();
+                var selectTypeAry = selectType.split("/");
+                var s_type = selectTypeAry[0];
+
+                var cp_number = $("#numberInput1").val();
+                var fdj_number = $("#numberInput2").val();
+                var sfz_number = $("#numberInput4").val(); //身份证	
+
+                var selectStr = cp_number + "_" + fdj_number + "_" + selectTypeAry[1] + "_" + sfz_number;
+                var isChecked = $("#checkboxDiv").attr("checked");
+                if (isChecked) {
+                    if (window.localStorage)
+                        localStorage.setItem("dzwz_all_str", selectStr);
+                }
+                break;
+        }
+    }
+    </script>
+    <script>
+    window.onload = function() {
+        //初始化，参数传入显示验证码的img元素id
+        TSOCapObj.init("tc_vcode_img");
+        //刷新拉取验证码图片
+        TSOCapObj.refresh();
+    }
+
+    //验证验证码答案
+    function verify() {
+        //获取用户输入
+        var ans = document.getElementById("tc_vcode_input").value;
+        //验证答案，验证完成后会回调第二个参数传入的函数
+
+        TSOCapObj.verify(ans, OnVerifyVCode);
+
+
+    }
+
+    function OnVerifyVCode(ret_json) {
+
+        if (ret_json.errorCode != 0) {
+            var obj = document.getElementById("tc_vcode_input");
+            obj.value = "";
+            TSOCapObj.refresh();
+
+            alert('输入验证码错误');
+            isReturn = true;
+            ticket = '';
+
+        } else {
+            /*
+             * 验证码验证通过，继续业务处理
+             */
+            var obj = document.getElementById("ticket");
+            //alert(ret_json.ticket);
+            obj.value = ret_json.ticket;
+
+            isReturn = true;
+            ticket = obj.value;
+
+
+        }
+    }
+    </script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=46415179" charset="UTF-8"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?7b458afe02f4b5810ec09c6fb19f9ed6";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+
+</html>

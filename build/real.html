@@ -53,7 +53,7 @@
         }
 
         var wxInfo = {
-            "openid": "o81pDuLcFI2sNfOuLFYk9RlfSLWc",
+            "openid": "o81pDuLcFI2sNfOuLFYk9RlfSLWcs",
             "nickname": "test",
             "sex": "1",
             "province": "PROVINCE",
@@ -63,16 +63,24 @@
             "unionid": "o6_bmasdasdsad6_2sgVt7hMZOPfL"
         };
         var videoH = '<video webkit-playsinline id="video-1" width="100%" height="100%" id="video">'+
+/*
 						'<source src="http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8" type="video/mp4">'+
-                        '<source src="http://bililive.kksmg.com/hls/rikaze001/playlist.m3u8" type="video/mp4">'+
+*/
+/*
+                        '<source src="http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8" type="video/mp4">'+
+*/
                         '<source src="../resource/level5.mp4" type="video/mp4">'+
                         '<p>Your browser does not support html5 video!</p>'+
                     '</video>';
         $('.videoW').append(videoH);
     </script>
+
+    <script src="http://172.24.26.18:3000/socket.io/socket.io.js"></script>
+<!--
+    <script src="http://danmaku.kankanews.com/socket.io/socket.io.js"></script>
+-->
     <script src="js/ABPlayer.js"></script>
     <script src="js/CommentCoreLibrary.js"></script>
-    <script src="http://danmaku.kankanews.com/socket.io/socket.io.js"></script>
     <script src="js/index.js"></script>
 </body>
 

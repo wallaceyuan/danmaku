@@ -17,7 +17,7 @@ class Wxdanmaku{
 		"pic"    => "http://static.statickksmg.com/image/2015/09/30/4888de38635d914c8f2d8188be1efb37.png",
 		//"hls"    => "",
 		"hls1"   => "http://bililive.kksmg.com/hls/disneyc5/playlist.m3u8",
-		"hls2"   => "http://bililive.kksmg.com/hls/xwzhgq/playlist.m3u8",
+		"hls2"   => "http://kankan.live.bestvcdn.com.cn/live/program/live991/weixinxwzh/live.m3u8",
 	);
 	
 	public function Wxdanmaku($code = ""){
