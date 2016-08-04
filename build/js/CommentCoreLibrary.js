@@ -689,6 +689,7 @@ var CoreComment = function() {
 		 * @return {undefined}
 		 */
 		set : function(y) {
+			console.log(288, "set");
 			/** @type {number} */
 			this._y = y;
 			if (!this.absolute) {
@@ -913,7 +914,6 @@ var CoreComment = function() {
 			}
 		}
 	}, init.prototype.animate = function() {
-		console.log("animate");
 		if (this._alphaMotion && (this.alpha = (this.dur - this.ttl) * (this._alphaMotion.to - this._alphaMotion.from) / this.dur + this._alphaMotion.from), 0 !== this.motion.length) {
 			/** @type {number} */
 			var ttl = Math.max(this.ttl, 0);
@@ -966,9 +966,12 @@ var ScrollComment = function(_super) {
 		this.absolute = true;
 	}, Animation.prototype.update = function() {
 		/** @type {number} */
-		var reWidth = this.width >50 ? 50:this.width
-		//var redur = this.width >50 ? this.dur * 50 / this.width : this.dur
-		this.x = this.ttl / this.dur * (this.parent.width + reWidth) - reWidth;
+		//var reWidth = this.width >50 ? 50:this.width
+		if(this.width >100 ){
+			this.dur = 4000 + (this.width/100 )*2
+		}
+		console.log(this.dur );
+		this.x = this.ttl / this.dur * (this.parent.width + this.width) - this.width;
 	}, Animation;
 }(CoreComment);
 var CommentManager = function() {
