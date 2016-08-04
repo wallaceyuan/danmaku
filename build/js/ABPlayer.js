@@ -387,6 +387,13 @@ var ABP = {
 					ABPInst.cmManager.time(Math.floor(video.currentTime * 1000));
 				});
 				video.addEventListener("play", function(){
+					console.log('play');
+					ABPInst.btnPlayBig.className = "ABP-PlayBig ABP-Pause";
+					ABPInst.btnPlayBig.style.display ='none';
+					ABPInst.btnPlay.className = "button ABP-Play ABP-Pause";
+					ABPInst.btnPlay.style.display = "block";
+					ABPInst.btnFull.style.display ='block';
+					ABPInst.commentbtn.style.display ='block';
 					videoState  = true;
 					ABPInst.cmManager.startTimer();
 					try{
@@ -406,6 +413,9 @@ var ABP = {
 				});
 /*				video.addEventListener("pause", function(){
 					videoState  = false;
+					console.log('pause');
+					ABPInst.btnPlayBig.className = "ABP-PlayBig";
+					ABPInst.btnPlay.className = "button ABP-Play";
 					if(!params.comment){
 						ABPInst.cmManager.startTimer();
 					}
@@ -416,6 +426,9 @@ var ABP = {
 					}
 				});*/
 				video.addEventListener("pause", function() {
+					console.log('pause');
+					ABPInst.btnPlayBig.className = "ABP-PlayBig";
+					ABPInst.btnPlay.className = "button ABP-Play";
 					ABPInst.cmManager.stopTimer();
 				});
 				video.addEventListener("waiting", function() {
